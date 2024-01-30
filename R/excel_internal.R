@@ -68,27 +68,27 @@ excel_internal <- function(
   }
   create_dir_if_not(folder)
   if (is.null(file_name)) {
-    file_name <- "d2.xlsx"
+    file_name <- "UnnamedFileVyos.xlsx"
   }
   if (!grepl("xlsx", file_name)) {
     file_name <- paste0(file_name, ".xlsx")
   }
   core_file_name <- stringr::str_split_1(file_name, ".xlsx")[[1]]
 
-  yazildi <- F
+  ok  <- F
   try({
     file_name <- file.path(folder, file_name)
     writexl::write_xlsx(dfs, file_name)
-    yazildi <- T
+    ok  <- T
     .blue("folder: {folder}\n\r")
-    success(glue::glue(" \n\r\n\r [excel] writing [ { core_file_name }] \n\r\n\r"))
+    success_force(glue::glue(" \n\r\n\r [excel] writing [ { core_file_name }] \n\r\n\r"))
   })
   # .......................................................... hash
-  if (is_false_false(yazildi)) {
+  if (isFALSE(ok )) {
     file_name_backup <- sprintf("%s-%s", core_file_name, get_hash(5)[[1]])
     file_name_backup <- file.path(folder, file_name_backup)
     .blue("folder: {folder}\n\r")
-    success(glue::glue(" \n\r\n\r [excel] writing [ { file_name_backup }] \n\r\n\r"))
+    success_force(glue::glue(" \n\r\n\r [excel] writing [ { file_name_backup }] \n\r\n\r"))
   }
   # ..........................................................
   invisible(dfs)

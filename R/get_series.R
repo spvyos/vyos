@@ -94,7 +94,11 @@ get_series_prepare <- function(index = null,
 #' @param debug debug option for development
 #' @param source source such as evds or fred for internal use for at this version
 #' @param base table or series on the source for internal use for at this version
-#' @return vyos_GETPREP S3 object
+#' @return vyos_GETPREP is an S3 object which has some generic functions such as print
+#' and excel. `print` generic gives some hints to user in order to use requested data
+#' such as creating output with excel function or examining requested data in global
+#' environment.
+#'
 #' @export
 #' @examples
 #' \dontrun{

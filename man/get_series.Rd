@@ -44,7 +44,10 @@ silently does its job. Gives warning only if something goes wrong.}
 \item{debug}{debug option for development}
 }
 \value{
-vyos_GETPREP S3 object
+vyos_GETPREP is an S3 object which has some generic functions such as print
+and excel. \code{print} generic gives some hints to user in order to use requested data
+such as creating output with excel function or examining requested data in global
+environment.
 }
 \description{
 The get_series() function requests data from data sources.
