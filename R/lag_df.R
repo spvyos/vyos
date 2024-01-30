@@ -10,8 +10,8 @@
 #' @export
 #'
 #' @examples
-#'
-#' lag_df( data.frame(list( a = 1: 5 ) , list(a = 1: 2 )) )
+#' df <-data.frame( a = 1:15 , b = 2:16 )
+#' tb <- lag_df( df , laglist= list(a = 1:5 , b = 1:3  ) )
 #'
 lag_df<- function( df , laglist ){
     .Call(`_vyos_lag_df2_c`, df, laglist)
@@ -31,8 +31,8 @@ as_tibblex <- function(df){
 #' @export
 #'
 #' @examples
-#' lag_df2( data.frame(list( a = 1: 5 ) , list(a = 1: 2 )) )
-#'
+#' df <-data.frame( a = 1:15 , b = 2:16 )
+#' df2 <- lag_df2( df , laglist= list(a = 1:5 , b = 1:3  ) )
 lag_df2<- function( df , laglist ){
     .Call(`_vyos_lag_df_c`, df, laglist)
 }
