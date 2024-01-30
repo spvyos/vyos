@@ -8,7 +8,7 @@ creates a string template for testing and example purposes}
 template_test()
 }
 \value{
-string template
+a string template that includes ID examples from different sources
 }
 \description{
 template_test

@@ -1,6 +1,6 @@
 
 ## vyos
-[![R-CMD-check](https://github.com/SermetPekin/vyos-repo/actions/workflows/R_CMD_check.yml/badge.svg)](https://github.com/SermetPekin/vyos-repo/actions/workflows/R_CMD_check.yml)
+[![R-CMD-check](https://github.com/spvyos/vyos/actions/workflows/R_CMD_check.yml/badge.svg)](https://github.com/spvyos/vyos/actions/workflows/R_CMD_check.yml)
 
 ## Overview
 
@@ -20,7 +20,7 @@ and FRED API of FED (Federal Reserve Bank).
 ### Development version
 ``` r
 library(devtools)
-install_github("SermetPekin/vyos-repo")
+install_github("spvyos/vyos-repo")
 ```
 
 ## Usage

@@ -1,19 +1,19 @@
-
-
 get_params_fred_fnc <- function(seriesID) {
-  params <- list(series_id = seriesID ,
-                 api_key =get_api_key("fred") ,
-                 file_type = "json")
+  params <- list(
+    series_id = seriesID,
+    api_key = get_api_key("fred"),
+    file_type = "json"
+  )
 }
 get_params_evds_fnc <- function(seriesID) {
   params <- list(
-    series = seriesID ,
-    key =  get_api_key("evds") ,
-    startDate = date_to_str_1( default_start_date()  )  ,
-    endDate =  date_to_str_1( default_end_date() ),
-    aggregationTypes = "avg" ,
+    series = seriesID,
+    key = get_api_key("evds"),
+    startDate = date_to_str_1(default_start_date()),
+    endDate = date_to_str_1(default_end_date()),
+    aggregationTypes = "avg",
     formulas = 0,
-    frequency = 1 ,
+    frequency = 1,
     type = "json"
   )
 }
@@ -36,12 +36,12 @@ get_params_evds_fnc <- function(seriesID) {
 # Quarterly: 6
 # Semiannual: 7
 # Annual: 8
-get_params_evds_datagroup_fnc <- function(datagroup = "bie_yssk" ) {
+get_params_evds_datagroup_fnc <- function(datagroup = "bie_yssk") {
   params <- list(
-    datagroup = datagroup ,
-    key =  get_api_key("evds") ,
-    startDate = date_to_str_1( default_start_date() )   ,
-    endDate = date_to_str_1( default_end_date() ) ,
+    datagroup = datagroup,
+    key = get_api_key("evds"),
+    startDate = date_to_str_1(default_start_date()),
+    endDate = date_to_str_1(default_end_date()),
     type = "json"
   )
 }

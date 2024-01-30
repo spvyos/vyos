@@ -1,5 +1,3 @@
-
-
 #' inn
 #' checks if the second parameter includes the first one as a value or a column name or a name
 #' @param x character to check if it exists in a vector or list
@@ -9,17 +7,17 @@
 #' @export
 #'
 #' @examples
-#'  .check = inn( "a" , list( a = 1 : 5 ) )
-inn <- function(x , table ){
-    if( is.character( table )  || is.numeric( table )){
-        return( match(x, table, nomatch = 0L) > 0L)
-    }
-    if(is.data.frame( table )){
-        return ( x   %in%  colnames(table) )
-    }
-    if(is.list( table )){
-        return ( x   %in%  names(table) )
-    }
+#' .check <- inn("a", list(a = 1:5))
+inn <- function(x, table) {
+  if (is.character(table) || is.numeric(table)) {
+    return(match(x, table, nomatch = 0L) > 0L)
+  }
+  if (is.data.frame(table)) {
+    return(x %in% colnames(table))
+  }
+  if (is.list(table)) {
+    return(x %in% names(table))
+  }
 }
 
 
@@ -33,8 +31,7 @@ inn <- function(x , table ){
 #' @export
 #'
 #' @examples
-#' .check = "a" %inn% data.frame( a = 1 : 5 )
+#' .check <- "a" %inn% data.frame(a = 1:5)
 "%inn%" <- function(x, table) {
-
-    inn( x , table )
+  inn(x, table)
 }

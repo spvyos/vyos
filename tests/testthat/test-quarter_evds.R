@@ -1,6 +1,6 @@
-
 test_that("quarter_evds works", {
-  expect_equal( {
+  expect_equal(
+    {
       template <- "
           TP.BISBORCORAN.QBE
       TP.BISBORCORAN.QBR
@@ -14,7 +14,9 @@ test_that("quarter_evds works", {
       TP.BISBORCORAN.QFI
       TP.BISBORCORAN.QFR
       "
-      o <- get_series( template , start_date =  "2006/01/01" )
-      is.data.frame( o$data ) && is.data.frame(o$lines$data[[1]] )
-  },  T )
+      o <- get_series(template, start_date = "2006/01/01")
+      is.data.frame(o$data) && is.data.frame(o$lines$data[[1]])
+    },
+    T
+  )
 })

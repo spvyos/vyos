@@ -1,4 +1,3 @@
-
-.testing_ff<-function(){
- testthat::test_dir("tests/testthat/core")
+.testing_ff <- function() {
+  testthat::test_dir("tests/testthat/core")
 }

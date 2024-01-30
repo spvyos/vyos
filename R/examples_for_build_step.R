@@ -9,12 +9,10 @@
 #'
 #' @examples
 #'
-#' obj  <- get_series( template_test() , debug = TRUE  )
-#' x = print( obj )
-#' if( !inherits(x , "vyos_GETPREP") ) {
-#' stop()
+#' obj <- get_series(template_test(), debug = TRUE)
+#' x <- print(obj)
+#' if (!inherits(x, "vyos_GETPREP")) {
+#'   stop()
 #' }
-#'
-#'
 #'
 NULL
