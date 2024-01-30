@@ -5,8 +5,8 @@
 ## Overview
 
 vyos package is an interface to make requests from data providers. 
-Current version is able to connect to APIs of EDDS of CBRT (Central Bank of the Republic of Türkiye)
-and FRED API of FED (Federal Reserve Bank). 
+Current version is able to connect to APIs of [EDDS](https://evds2.tcmb.gov.tr/index.php?/evds/userDocs) of CBRT (Central Bank of the Republic of Türkiye)
+and [FRED API](https://fred.stlouisfed.org/docs/api/fred/) of FED (Federal Reserve Bank). 
 
 ## Installation
 
@@ -375,19 +375,19 @@ or
 > excel(obj , "file_name" , "somefolder" ) 
 
 ```
-## Getting api keys
+### Getting api keys
 Both data providers require API keys for access, which users can easily obtain 
     by creating accounts on their respective websites. 
 
-## EDDS (CBRT)
+### EDDS (CBRT)
 
 https://evds2.tcmb.gov.tr/index.php?/evds/userDocs
 
     
-## FRED (FED)
+### FRED (FED)
 
 https://fred.stlouisfed.org/docs/api/api_key.html
 
 
-    
+
 

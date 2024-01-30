@@ -15,8 +15,10 @@
 <meta property="og:description" content="Interface for multiple data sources, such as the 
     EDDS API &lt;https://evds2.tcmb.gov.tr/index.php?/evds/userDocs&gt; of the 
     Central Bank of the Republic of Türkiye and the 
-    FRED API &lt;https://fred.stlouisfed.org/docs/api/fred/&gt; of the Federal Reserve Bank. 
-    It provides caching ability with the selection of periods to increase the 
+    FRED API &lt;https://fred.stlouisfed.org/docs/api/fred&gt; of the Federal Reserve Bank. 
+    Both data providers require API keys for access, which users can easily obtain 
+    by creating accounts on their respective websites. 
+    The package provides caching ability with the selection of periods to increase the 
     speed and efficiency of requests. 
     It combines datasets requested from different sources, 
     helping users when the data has common frequencies. 
@@ -83,7 +85,7 @@
 <div class="section level2">
 <h2 id="overview">Overview<a class="anchor" aria-label="anchor" href="#overview"></a>
 </h2>
-<p>vyos package is an interface to make requests from data providers. Current version is able to connect to APIs of EDDS of CBRT (Central Bank of the Republic of Türkiye) and FRED API of FED (Federal Reserve Bank).</p>
+<p>vyos package is an interface to make requests from data providers. Current version is able to connect to APIs of <a href="https://evds2.tcmb.gov.tr/index.php?/evds/userDocs" class="external-link">EDDS</a> of CBRT (Central Bank of the Republic of Türkiye) and <a href="https://fred.stlouisfed.org/docs/api/fred/" class="external-link">FRED API</a> of FED (Federal Reserve Bank).</p>
 </div>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
@@ -306,7 +308,7 @@
 <span><span class="co"># # ℹ 4 more variables: TP_YSSK_A2_lag_3 &lt;dbl&gt;, TP_YSSK_A2_lag_4 &lt;dbl&gt;, TP_YSSK_A2_lag_5 &lt;dbl&gt;, TP_YSSK_A2_lag_6 &lt;dbl&gt;</span></span>
 <span><span class="co"># # ℹ Use `print(n = ...)` to see more rows</span></span></code></pre></div>
 <blockquote>
-<p>Does not require to give source name. it figures out from the index IDs given.</p>
+<p>Does not require source names for IDs. Function uses hints to figures out which sources to requests from the index IDs given.</p>
 </blockquote>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">index_template</span> <span class="op">&lt;-</span> <span class="st">"</span></span>
@@ -369,7 +371,7 @@
 <span><span class="co"># </span></span>
 <span><span class="co"># =========================================================</span></span></code></pre></div>
 <blockquote>
-<p>individual data frames can be reached via object<span class="math inline"><em>l</em><em>i</em><em>n</em><em>e</em><em>s</em></span>data</p>
+<p>individual data frames can be reached via <code>object$lines$data</code></p>
 </blockquote>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="sc">&gt;</span> o<span class="sc">$</span>lines</span>
 <span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a><span class="co"># # A tibble: 3 × 8</span></span>
@@ -434,7 +436,7 @@
 <h3 id="excel">excel<a class="anchor" aria-label="anchor" href="#excel"></a>
 </h3>
 <blockquote>
-<p>excel function to write all data frames of the object</p>
+<p>creates excel file including all data frames of the object</p>
 </blockquote>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="sc">&gt;</span> obj <span class="ot">&lt;-</span> <span class="fu">get_series</span>( <span class="at">index =</span> <span class="fu">template_test</span>() )</span>
 <span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">excel</span>(obj , <span class="st">"file_name.xlsx"</span> , <span class="st">"somefolder"</span> ) </span>
@@ -445,14 +447,15 @@
 <div class="section level2">
 <h2 id="getting-api-keys">Getting api keys<a class="anchor" aria-label="anchor" href="#getting-api-keys"></a>
 </h2>
+<p>Both data providers require API keys for access, which users can easily obtain by creating accounts on their respective websites.</p>
 </div>
 <div class="section level2">
-<h2 id="cbrt">CBRT<a class="anchor" aria-label="anchor" href="#cbrt"></a>
+<h2 id="edds-cbrt">EDDS (CBRT)<a class="anchor" aria-label="anchor" href="#edds-cbrt"></a>
 </h2>
 <p><a href="https://evds2.tcmb.gov.tr/index.php?/evds/userDocs" class="external-link uri">https://evds2.tcmb.gov.tr/index.php?/evds/userDocs</a></p>
 </div>
 <div class="section level2">
-<h2 id="fred">FRED<a class="anchor" aria-label="anchor" href="#fred"></a>
+<h2 id="fred-fed">FRED (FED)<a class="anchor" aria-label="anchor" href="#fred-fed"></a>
 </h2>
 <p><a href="https://fred.stlouisfed.org/docs/api/api_key.html" class="external-link uri">https://fred.stlouisfed.org/docs/api/api_key.html</a></p>
 </div>
