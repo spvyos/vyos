@@ -12,6 +12,7 @@ get_series(
   freq = null,
   cache = FALSE,
   na.remove = TRUE,
+  verbose = FALSE,
   ...,
   source = c("multi", "evds", "fred"),
   base = c("multi", "series", "table"),
@@ -30,6 +31,9 @@ get_series(
 \item{cache}{cache option if false new request will be made}
 
 \item{na.remove}{it will safely remove NA values only if all columns are NA}
+
+\item{verbose}{if TRUE it prints some information during the process. If FALSE
+silently does its job. Gives warning only if something goes wrong.}
 
 \item{...}{for future versions}
 

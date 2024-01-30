@@ -23,5 +23,5 @@ Sets cache folder or changes it if it was already set in order to save caches
 when user wants to make last requests available for a while for the next calls.
 }
 \examples{
-change_cache_folder( "my_cache_folder" , verbose = TRUE )
+change_cache_folder("my_cache_folder", verbose = TRUE)
 }
