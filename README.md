@@ -8,7 +8,6 @@ vyos package is an interface to make requests from data providers.
 Current version is able to connect to APIs of EDDS of CBRT (Central Bank of the Republic of Türkiye)
 and FRED API of FED (Federal Reserve Bank). 
 
-
 ## Installation
 
 ``` r
