@@ -114,6 +114,7 @@ get_series <- function(index = null,
                        source = c("multi", "evds", "fred"), # for internal use
                        base = c("multi", "series", "table"), # for internal use
                        debug = FALSE) {
+
   check_users_choice_if_cache(cache)
 
   obj <- get_series_prepare(
