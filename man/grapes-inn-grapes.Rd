@@ -18,5 +18,5 @@ bool value TRUE if it exists FALSE if it does not
 \%inn\%
 }
 \examples{
-.check = "a" \%inn\% data.frame( a = 1 : 5 )
+.check <- "a" \%inn\% data.frame(a = 1:5)
 }

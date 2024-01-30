@@ -36,6 +36,6 @@ data.frame or List of data frame or vyos_GETPREP object can be passed..
 }
 \examples{
 \dontrun{
-excel( data.frame(a = 1 : 3 ) , file_name = "test1.xlsx" , folder = "." )
+excel(data.frame(a = 1:3), file_name = "test1.xlsx", folder = ".")
 }
 }

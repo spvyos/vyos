@@ -1,4 +1,4 @@
-#' print.vyos_GETPREP
+ #' print.vyos_GETPREP
 #' Generic method for S3 vyos_GETPREP object
 #' @param x S3 vyos_GETPREP object
 #' @param ... further arguments passed to or from other methods.
@@ -26,15 +26,16 @@ print.vyos_GETPREP <- function(x, ...) {
   index       : {x$index  }
   start_date  : {start_date}
   end_date    : {end_date}
-                   status [{x$status }]
+  status [{x$status }]
 
- lines
-
- each line corresponds to a different set of func and data
+ lines$data
+===================
+ ! each line corresponds to a different set of func and data
     data can be reached as below
         --> { crayon::red( str1   )}
   {tb}
-
+ data
+===================
   (combined) data
 
     a combined data frame will be constructed

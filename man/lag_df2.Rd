@@ -24,6 +24,6 @@ useful to have multiple selection of lags of some columns while some columns to
 be present only one or two lags or none.
 }
 \examples{
-df <-data.frame( a = 1:15 , b = 2:16 )
-df2 <- lag_df2( df , laglist= list(a = 1:5 , b = 1:3  ) )
+df <- data.frame(a = 1:15, b = 2:16)
+df2 <- lag_df2(df, laglist = list(a = 1:5, b = 1:3))
 }

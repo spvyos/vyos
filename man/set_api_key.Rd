@@ -29,8 +29,8 @@ set_api_key
 \examples{
 \dontrun{
 
-set_api_key( "ABCDEFGHIJKLMOP" , "evds" , "env" )
-set_api_key( "ABCDEFGHIJKLMOP" , "fred" , "env" )
-set_api_key( "ABCDEFGHIJKLMOP" , "fred" , "file" )
+set_api_key("ABCDEFGHIJKLMOP", "evds", "env")
+set_api_key("ABCDEFGHIJKLMOP", "fred", "env")
+set_api_key("ABCDEFGHIJKLMOP", "fred", "file")
 }
 }

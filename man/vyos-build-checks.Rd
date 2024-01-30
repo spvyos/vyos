@@ -8,13 +8,11 @@ This page checks some examples on build process to avoid missing
 }
 \examples{
 
-obj  <- get_series( template_test() , debug = TRUE  )
-x = print( obj )
-if( !inherits(x , "vyos_GETPREP") ) {
-stop()
+obj <- get_series(template_test(), debug = TRUE)
+x <- print(obj)
+if (!inherits(x, "vyos_GETPREP")) {
+  stop()
 }
-
-
 
 }
 \keyword{internal}

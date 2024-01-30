@@ -22,7 +22,7 @@ Generic method for S3 vyos_GETPREP object
 \examples{
 \dontrun{
 
-obj <- get_series(template_test() )
-print(obj )
+obj <- get_series(template_test())
+print(obj)
 }
 }

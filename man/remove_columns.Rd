@@ -20,6 +20,6 @@ data.frame
 Remove a column or columns from data.frame
 }
 \examples{
- df <- remove_columns(cars, "speed")
+df <- remove_columns(cars, "speed")
 
 }

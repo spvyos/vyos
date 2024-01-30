@@ -52,9 +52,9 @@ both as a combined data frame and also individual data frames.
 }
 \examples{
 \dontrun{
-o <- get_series(template_test() )
-excel( o )
-object <- get_series( "UNRATE" , start_date= "2000/01/01" , na.remove = TRUE )
-excel( object  )
+o <- get_series(template_test())
+excel(o)
+object <- get_series("UNRATE", start_date = "2000/01/01", na.remove = TRUE)
+excel(object)
 }
 }
