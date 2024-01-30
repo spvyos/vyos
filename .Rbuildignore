@@ -1,0 +1,11 @@
+^.*\.Rproj$
+^\.Rproj\.user$
+^\.github$
+^\.txt
+^\.xlsx
+^LICENSE\.md$
+^caches_vyos$
+^APIKEYS$
+^some\.c\.txt
+^cran-comments\.md$
+^docs

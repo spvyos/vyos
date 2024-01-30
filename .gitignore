@@ -1,0 +1,15 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+src/*.o
+src/*.so
+src/*.dll
+*.xlsx
+*APIKEY*.txt
+caches_vyos/
+*.txt
+*.DS_Store
+tests/.DS_Store
+*.Rcheck
+caches_vyos/
