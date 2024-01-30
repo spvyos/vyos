@@ -28,7 +28,7 @@ excel(
 \item{...}{for future versions}
 }
 \value{
-object or list of data frame back
+it returns object or list of data frame back
 }
 \description{
 The excel() function creates an excel file according to the object given.

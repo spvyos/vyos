@@ -75,16 +75,16 @@ excel_internal <- function(
   }
   core_file_name <- stringr::str_split_1(file_name, ".xlsx")[[1]]
 
-  ok  <- F
+  ok <- F
   try({
     file_name <- file.path(folder, file_name)
     writexl::write_xlsx(dfs, file_name)
-    ok  <- T
+    ok <- T
     .blue("folder: {folder}\n\r")
     success_force(glue::glue(" \n\r\n\r [excel] writing [ { core_file_name }] \n\r\n\r"))
   })
   # .......................................................... hash
-  if (isFALSE(ok )) {
+  if (isFALSE(ok)) {
     file_name_backup <- sprintf("%s-%s", core_file_name, get_hash(5)[[1]])
     file_name_backup <- file.path(folder, file_name_backup)
     .blue("folder: {folder}\n\r")

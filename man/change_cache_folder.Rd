@@ -2,25 +2,20 @@
 % Please edit documentation in R/00_cache.R
 \name{change_cache_folder}
 \alias{change_cache_folder}
-\title{Sets cache folder or changes it if it was already set in order to save caches
-when user wants to make last requests available for a while for the next calls.}
+\title{Sets the cache folder or changes it if it was already set to save caches.}
 \usage{
 change_cache_folder(folder = null, verbose = FALSE)
 }
 \arguments{
-\item{folder}{folder to set as a cache folder. Default value is NULL which triggers
-the check_users_choice_if_cache function that provides some options to user to use
-as a cache folder or a temporary one or not caching.}
+\item{folder}{Folder to set as a cache folder. The default value is NULL,
+which triggers the check_users_choice_if_cache function that provides some
+options to the user to use it as a cache folder, a temporary one, or disable caching.}
 
-\item{verbose}{bool True or False. If TRUE it gives information when the
-cache folder was set. Otherwise only prints warning then there is an error.}
-}
-\value{
-null
+\item{verbose}{Boolean. If TRUE, it provides information when the
+cache folder is set. Otherwise, it only prints a warning when there is an error.}
 }
 \description{
-Sets cache folder or changes it if it was already set in order to save caches
-when user wants to make last requests available for a while for the next calls.
+Sets the cache folder or changes it if it was already set to save caches.
 }
 \examples{
 change_cache_folder("my_cache_folder", verbose = TRUE)

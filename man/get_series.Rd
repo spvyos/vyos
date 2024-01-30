@@ -50,12 +50,12 @@ such as creating output with excel function or examining requested data in globa
 environment.
 }
 \description{
-The get_series() function requests data from data sources.
-when more than one index was given as a character vector or a string template
-it requests all items individually from corresponding sources by figuring out
-from the format of item given.
-Combines a data frame when there is a common frequencies. Returns all data
-both as a combined data frame and also individual data frames.
+The \code{get_series()} function retrieves data from various sources. When multiple
+indexes are provided as a character vector or string template, it individually
+requests each item from the corresponding sources, discerning the source from
+the item's format. The function combines data frames when there are common
+frequencies and returns both a combined data frame and individual data frames
+for each requested item.
 }
 \examples{
 \dontrun{

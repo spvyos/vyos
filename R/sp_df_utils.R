@@ -1,10 +1,10 @@
-#' Remove a column or columns from data.frame
+#' Remove a column or columns from a data.frame.
 #'
-#' @param df data.frame or tibble
-#' @param column_names column name or column names as a character vector
-#' @param verbose bool gives extra info when removed a column.
-#' @usage remove_columns(df, column_names , verbose = FALSE  )
-#' @return data.frame
+#' @param df Data.frame or tibble.
+#' @param column_names Column name or column names as a character vector.
+#' @param verbose Boolean, provides extra information when removing a column.
+#' @usage remove_columns(df, column_names, verbose = FALSE)
+#' @return Data.frame.
 #' @export
 #'
 #' @examples

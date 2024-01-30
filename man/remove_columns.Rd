@@ -2,22 +2,22 @@
 % Please edit documentation in R/sp_df_utils.R
 \name{remove_columns}
 \alias{remove_columns}
-\title{Remove a column or columns from data.frame}
+\title{Remove a column or columns from a data.frame.}
 \usage{
-remove_columns(df, column_names , verbose = FALSE  )
+remove_columns(df, column_names, verbose = FALSE)
 }
 \arguments{
-\item{df}{data.frame or tibble}
+\item{df}{Data.frame or tibble.}
 
-\item{column_names}{column name or column names as a character vector}
+\item{column_names}{Column name or column names as a character vector.}
 
-\item{verbose}{bool gives extra info when removed a column.}
+\item{verbose}{Boolean, provides extra information when removing a column.}
 }
 \value{
-data.frame
+Data.frame.
 }
 \description{
-Remove a column or columns from data.frame
+Remove a column or columns from a data.frame.
 }
 \examples{
 df <- remove_columns(cars, "speed")

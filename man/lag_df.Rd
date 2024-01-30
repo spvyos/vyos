@@ -2,29 +2,26 @@
 % Please edit documentation in R/lag_df.R
 \name{lag_df}
 \alias{lag_df}
-\title{lag_df
-Creates extra columns given as a list of column names and sequences.
-useful to have multiple selection of lags of some columns while some columns to
-be present only one or two lags or none.}
+\title{lag_df}
 \usage{
 lag_df(df, laglist)
 }
 \arguments{
-\item{df}{data.frame or tibble}
+\item{df}{A data.frame or tibble.}
 
-\item{laglist}{a list of column names as index and lag sequence as value}
+\item{laglist}{A list of column names where each index corresponds to a column
+name and the associated value is the lag sequence.}
 }
 \value{
 tibble
 }
 \description{
-lag_df
-Creates extra columns given as a list of column names and sequences.
-useful to have multiple selection of lags of some columns while some columns to
-be present only one or two lags or none.
+The \code{lag_df} function creates additional columns based on a list of column names
+and lag sequences. This feature is beneficial for scenarios where you need
+varying lag selections for certain columns, allowing flexibility in specifying
+different lags for different columns or opting for no lag at all.
 }
 \examples{
 df <- data.frame(a = 1:15, b = 2:16)
 tb <- lag_df(df, laglist = list(a = 1:5, b = 1:3))
-
 }

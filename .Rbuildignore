@@ -2,7 +2,7 @@
 ^\.Rproj\.user$
 ^\.github$
 ^\.txt
-^\.xlsx
+^\.xlsx$
 ^LICENSE\.md$
 ^caches_vyos$
 ^APIKEYS$

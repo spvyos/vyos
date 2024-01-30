@@ -1,17 +1,18 @@
 #' lag_df
-#' Creates extra columns given as a list of column names and sequences.
-#' useful to have multiple selection of lags of some columns while some columns to
-#' be present only one or two lags or none.
-#' @param df  data.frame or tibble
-#' @param laglist a list of column names as index and lag sequence as value
-#'
+#' @description
+#' The `lag_df` function creates additional columns based on a list of column names
+#' and lag sequences. This feature is beneficial for scenarios where you need
+#' varying lag selections for certain columns, allowing flexibility in specifying
+#' different lags for different columns or opting for no lag at all.
+#' @param df A data.frame or tibble.
+#' @param laglist A list of column names where each index corresponds to a column
+#' name and the associated value is the lag sequence.
 #' @return tibble
 #' @export
 #'
 #' @examples
 #' df <- data.frame(a = 1:15, b = 2:16)
 #' tb <- lag_df(df, laglist = list(a = 1:5, b = 1:3))
-#'
 lag_df <- function(df, laglist) {
   .Call(`_vyos_lag_df2_c`, df, laglist)
 }
@@ -20,12 +21,14 @@ as_tibblex <- function(df) {
   .Call(`_vyos_as_tibblex`, df)
 }
 #' lag_df2
-#' Creates extra columns given as a list of column names and sequences.
-#' useful to have multiple selection of lags of some columns while some columns to
-#' be present only one or two lags or none.
-#' @param df  data.frame or tibble
-#' @param laglist a list of column names as index and lag sequence as value
-#'
+#' @description
+#' The `lag_df2` function creates additional columns based on a list of column names
+#' and lag sequences. This feature is beneficial for scenarios where you need
+#' varying lag selections for certain columns, allowing flexibility in specifying
+#' different lags for different columns or opting for no lag at all.
+#' @param df A data.frame or tibble.
+#' @param laglist A list of column names where each index corresponds to a column
+#' name and the associated value is the lag sequence.
 #' @return data.frame
 #' @export
 #'

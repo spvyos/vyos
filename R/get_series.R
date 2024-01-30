@@ -76,12 +76,12 @@ get_series_prepare <- function(index = null,
 #' Requests data from multiple data sources.
 #' EDDS API and FRED API at this version.
 #' @description
-#' The get_series() function requests data from data sources.
-#' when more than one index was given as a character vector or a string template
-#' it requests all items individually from corresponding sources by figuring out
-#' from the format of item given.
-#' Combines a data frame when there is a common frequencies. Returns all data
-#' both as a combined data frame and also individual data frames.
+#' The `get_series()` function retrieves data from various sources. When multiple
+#'  indexes are provided as a character vector or string template, it individually
+#'  requests each item from the corresponding sources, discerning the source from
+#'  the item's format. The function combines data frames when there are common
+#'  frequencies and returns both a combined data frame and individual data frames
+#'  for each requested item.
 #' @param index character  vector or string
 #' @param start_date limits the start date of data
 #' @param end_date  limits the end date of data
@@ -118,7 +118,6 @@ get_series <- function(index = null,
                        source = c("multi", "evds", "fred"), # for internal use
                        base = c("multi", "series", "table"), # for internal use
                        debug = FALSE) {
-
   check_users_choice_if_cache(cache)
 
   obj <- get_series_prepare(

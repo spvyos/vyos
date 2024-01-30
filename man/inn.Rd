@@ -2,22 +2,20 @@
 % Please edit documentation in R/sp_op_utils.R
 \name{inn}
 \alias{inn}
-\title{inn
-checks if the second parameter includes the first one as a value or a column name or a name}
+\title{inn}
 \usage{
 inn(x, table)
 }
 \arguments{
-\item{x}{character to check if it exists in a vector or list}
+\item{x}{Character to check if it exists in a vector or list.}
 
-\item{table}{list, data frame or any vector}
+\item{table}{List, data frame, or any vector.}
 }
 \value{
-bool value TRUE if it exists FALSE if it does not
+Logical value TRUE if it exists, FALSE if it does not.
 }
 \description{
-inn
-checks if the second parameter includes the first one as a value or a column name or a name
+Checks if the second parameter includes the first one as a value, a column name, or a name.
 }
 \examples{
 .check <- inn("a", list(a = 1:5))

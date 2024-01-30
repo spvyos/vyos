@@ -9,7 +9,7 @@
 #' @param .debug for internal use
 #' @param env environment
 #' @param ... for future versions
-#' @return object or list of data frame back
+#' @return it returns object or list of data frame back
 #' @export
 #' @examples
 #' \dontrun{
@@ -48,15 +48,7 @@ excel2 <- function(df, ...) {
   }
   excel(df2, ...)
 }
+
 filter_list_df <- function(liste) {
-  liste2 <- list()
-  say <- 0
-  names_ <- names(liste)
-  for (item in liste) {
-    say <- say + 1
-    if (inherits(item, "data.frame")) {
-      liste2[[names_[say]]] <- item
-    }
-  }
-  liste2
+  purrr::keep(liste, function(x) inherits(x, "data.frame"))
 }
