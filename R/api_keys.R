@@ -20,16 +20,18 @@ check_api_key_works <- function(source_name = "evds",
   if (is.function(fnc)) {
     res <- fnc(key)
     if (res) {
-      success(g("\n
+        .blue_force(g("\n
 =========================================================
     api key for [{source_name}] was tested successfully.
 =========================================================\n
                 "))
+        return(inv(true))
     }
-    return(inv(true))
+
   }
   message_api_key_fails(source_name, key)
   Sys.sleep(2)
+  stop()
 }
 message_api_key_fails <- function(source_name = "evds",
                                   key = "..") {
@@ -41,6 +43,7 @@ message_api_key_fails <- function(source_name = "evds",
                     {format_message_set_api_key(source_name)}
 =========================================================\n\r"
   message(g(msg))
+
 }
 replace_if_null <- function(x, value) {
   if (is.null(x)) {
@@ -51,7 +54,7 @@ replace_if_null <- function(x, value) {
 show_usage <- function(func_name = "set_api_key",
                        source_name = "evds",
                        call. = "..") {
-  .blue("
+  .blue_force("
    ======================================
           {call.}
           call has an error
@@ -99,7 +102,9 @@ set_api_key <- function(key = null,
   # check_required(key)
   option <- match.arg(option)
   g <- glue::glue
+
   check_api_key_works(source_name, key)
+
   if (identical(option, "env")) {
     key_name <- api_key_name_format(source_name)
     if (is_(source_name, "evds")) {
@@ -111,7 +116,7 @@ set_api_key <- function(key = null,
     via <- g("
     by setting environment variable with key `{key_name}`
     ")
-    success(g("
+    success_force(g("
           APIKEY for [{source_name}] was set {via}
                       "))
   }
@@ -126,7 +131,7 @@ set_api_key <- function(key = null,
     via <- g("
     by creating a file called `{file_name}`
     ")
-    success(g("
+    success_force(g("
           APIKEY for [{source_name}] was set {via}
                       "))
   }

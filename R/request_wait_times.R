@@ -44,7 +44,9 @@ time_is_ok <- function(last_requested_time = get_yesterday(), seconds = 1) {
   diff_seconds > seconds
 }
 # ...................................................................... should_I_wait_for_request
-should_I_wait_for_request <- function(source_name = "evds", seconds = 1, .verbose = T) {
+should_I_wait_for_request <- function(source_name = "evds", seconds = 1, .verbose = FALSE ) {
+
+
   last_request_time <- check_last_requested_from_source(source_name)
   last_request_time <- as.POSIXct(last_request_time, origin = "1970-01-01")
   if (time_is_ok(last_request_time, seconds)) {

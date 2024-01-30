@@ -29,26 +29,31 @@ install_github("spvyos/vyos-repo")
 
 
 ``` r
-set_api_key( "ABCDEFGHIJKLMOP" , "evds" , "env" )
-set_api_key( "ABCDEFGHIJKLMOP" , "fred" , "env" )
-# or
-set_api_key( "ABCDEFGHIJKLMOP" , "evds" , "file" )
-set_api_key( "ABCDEFGHIJKLMOP" , "fred" , "file" )
+# Set API keys for EDDS
+set_api_key("YOUR_EDDS_API_KEY", "evds", "env")
+# Set API keys for FRED
+set_api_key("YOUR_FRED_API_KEY", "fred", "env")
+# Alternatively, you can use file-based configuration
+set_api_key("YOUR_EDDS_API_KEY", "evds", "file")
+set_api_key("YOUR_FRED_API_KEY", "fred", "file")
 
 ```
 
 ###  get_series 
 
 ``` r
+# Define a template for series
 template <- "
     UNRATE        #fred (series)
     bie_abreserv  #evds (table)
     TP.AB.B1      #evds (series)
 "
 
-obj <- get_series( template , start_date =  "2012/05/22" , cache = F ) 
+# Fetch data based on the template
+obj <- get_series(template, start_date = "2012/05/22", cache = FALSE)
 
-obj
+# Display the results
+print(obj)
 
 ======================================vyos_GETPREP=======
   status      : completed
@@ -97,7 +102,27 @@ obj
 
 =========================================================
   ```
+### Additional Usage Examples
+``` r
+# Fetch data for a specific index
+o <- get_series("bie_yssk", start_date = "2010-01-01")
+print(o)
 
+# Fetch data for multiple indexes using a vector or template
+index_vector <- c("TP_YSSK_A1", "TP_YSSK_A2")
+o <- get_series(index_vector)
+print(o)
+
+# Remove NA values from the data frame
+df_raw <- o$data
+df <- remove_na_safe(df_raw)
+print(df)
+
+# Create a lagged data frame
+df2 <- lag_df(df, list(TP_YSSK_A1 = 1:3, TP_YSSK_A2 = 1:6))
+print(df2)
+
+```
 
 ``` r
   
@@ -235,8 +260,8 @@ df2
 # # ℹ Use `print(n = ...)` to see more rows
 ```
 
-> Does not require source names for IDs. 
-    Function uses hints to figures out which sources to requests from the index IDs given.
+> `get_series` function does not require source names for IDs. The function uses hints 
+    to figure out which sources to request from for the index IDs given.
 
 ```r 
 index_template <- "
@@ -363,16 +388,16 @@ o
 # # ℹ Use `print(n = ...)` to see more rows
 ```
 
-### excel 
-
+### Excel export 
 > creates excel file including all data frames of the object 
 
-
 ```r
-> obj <- get_series( index = template_test() )
-> excel(obj , "file_name.xlsx" , "somefolder" ) 
-or 
-> excel(obj , "file_name" , "somefolder" ) 
+
+obj <- get_series( index = template_test() )
+
+# Export data frames to an Excel file
+excel(obj, "file_name.xlsx", "somefolder")
+
 
 ```
 ### Getting api keys

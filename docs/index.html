@@ -107,120 +107,147 @@
 <h3 id="set_api_key">set_api_key<a class="anchor" aria-label="anchor" href="#set_api_key"></a>
 </h3>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="reference/set_api_key.html">set_api_key</a></span><span class="op">(</span> <span class="st">"ABCDEFGHIJKLMOP"</span> , <span class="st">"evds"</span> , <span class="st">"env"</span> <span class="op">)</span></span>
-<span><span class="fu"><a href="reference/set_api_key.html">set_api_key</a></span><span class="op">(</span> <span class="st">"ABCDEFGHIJKLMOP"</span> , <span class="st">"fred"</span> , <span class="st">"env"</span> <span class="op">)</span></span>
-<span><span class="co"># or</span></span>
-<span><span class="fu"><a href="reference/set_api_key.html">set_api_key</a></span><span class="op">(</span> <span class="st">"ABCDEFGHIJKLMOP"</span> , <span class="st">"evds"</span> , <span class="st">"file"</span> <span class="op">)</span></span>
-<span><span class="fu"><a href="reference/set_api_key.html">set_api_key</a></span><span class="op">(</span> <span class="st">"ABCDEFGHIJKLMOP"</span> , <span class="st">"fred"</span> , <span class="st">"file"</span> <span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># Set API keys for EDDS</span></span>
+<span><span class="fu"><a href="reference/set_api_key.html">set_api_key</a></span><span class="op">(</span><span class="st">"YOUR_EDDS_API_KEY"</span>, <span class="st">"evds"</span>, <span class="st">"env"</span><span class="op">)</span></span>
+<span><span class="co"># Set API keys for FRED</span></span>
+<span><span class="fu"><a href="reference/set_api_key.html">set_api_key</a></span><span class="op">(</span><span class="st">"YOUR_FRED_API_KEY"</span>, <span class="st">"fred"</span>, <span class="st">"env"</span><span class="op">)</span></span>
+<span><span class="co"># Alternatively, you can use file-based configuration</span></span>
+<span><span class="fu"><a href="reference/set_api_key.html">set_api_key</a></span><span class="op">(</span><span class="st">"YOUR_EDDS_API_KEY"</span>, <span class="st">"evds"</span>, <span class="st">"file"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="reference/set_api_key.html">set_api_key</a></span><span class="op">(</span><span class="st">"YOUR_FRED_API_KEY"</span>, <span class="st">"fred"</span>, <span class="st">"file"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="get_series">get_series<a class="anchor" aria-label="anchor" href="#get_series"></a>
 </h3>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a>template <span class="ot">&lt;-</span> <span class="st">"</span></span>
-<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a><span class="st">    UNRATE        #fred (series)</span></span>
-<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a><span class="st">    bie_abreserv  #evds (table)</span></span>
-<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a><span class="st">    TP.AB.B1      #evds (series)</span></span>
-<span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a><span class="st">"</span></span>
-<span id="cb4-6"><a href="#cb4-6" tabindex="-1"></a></span>
-<span id="cb4-7"><a href="#cb4-7" tabindex="-1"></a>obj <span class="ot">&lt;-</span> <span class="fu">get_series</span>( template , <span class="at">start_date =</span>  <span class="st">"2012/05/22"</span> , <span class="at">cache =</span> F ) </span>
-<span id="cb4-8"><a href="#cb4-8" tabindex="-1"></a></span>
-<span id="cb4-9"><a href="#cb4-9" tabindex="-1"></a>obj</span>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="co"># Define a template for series</span></span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a>template <span class="ot">&lt;-</span> <span class="st">"</span></span>
+<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a><span class="st">    UNRATE        #fred (series)</span></span>
+<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a><span class="st">    bie_abreserv  #evds (table)</span></span>
+<span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a><span class="st">    TP.AB.B1      #evds (series)</span></span>
+<span id="cb4-6"><a href="#cb4-6" tabindex="-1"></a><span class="st">"</span></span>
+<span id="cb4-7"><a href="#cb4-7" tabindex="-1"></a></span>
+<span id="cb4-8"><a href="#cb4-8" tabindex="-1"></a><span class="co"># Fetch data based on the template</span></span>
+<span id="cb4-9"><a href="#cb4-9" tabindex="-1"></a>obj <span class="ot">&lt;-</span> <span class="fu">get_series</span>(template, <span class="at">start_date =</span> <span class="st">"2012/05/22"</span>, <span class="at">cache =</span> <span class="cn">FALSE</span>)</span>
 <span id="cb4-10"><a href="#cb4-10" tabindex="-1"></a></span>
-<span id="cb4-11"><a href="#cb4-11" tabindex="-1"></a><span class="sc">==</span><span class="er">====================================</span>vyos_GETPREP<span class="sc">==</span><span class="er">=====</span></span>
-<span id="cb4-12"><a href="#cb4-12" tabindex="-1"></a>  status      <span class="sc">:</span> completed</span>
-<span id="cb4-13"><a href="#cb4-13" tabindex="-1"></a>  index       <span class="sc">:</span> </span>
-<span id="cb4-14"><a href="#cb4-14" tabindex="-1"></a>    UNRATE        <span class="co">#fred (series)</span></span>
-<span id="cb4-15"><a href="#cb4-15" tabindex="-1"></a>    bie_abreserv  <span class="co">#evds (table)</span></span>
-<span id="cb4-16"><a href="#cb4-16" tabindex="-1"></a>    TP.AB.B1      <span class="co">#evds (series)</span></span>
-<span id="cb4-17"><a href="#cb4-17" tabindex="-1"></a></span>
-<span id="cb4-18"><a href="#cb4-18" tabindex="-1"></a>  start_date  <span class="sc">:</span> <span class="dv">2012</span><span class="sc">/</span><span class="dv">05</span><span class="sc">/</span><span class="dv">22</span></span>
-<span id="cb4-19"><a href="#cb4-19" tabindex="-1"></a>  end_date    <span class="sc">:</span> <span class="dv">2100-01-01</span></span>
-<span id="cb4-20"><a href="#cb4-20" tabindex="-1"></a>  status [completed]</span>
-<span id="cb4-21"><a href="#cb4-21" tabindex="-1"></a></span>
-<span id="cb4-22"><a href="#cb4-22" tabindex="-1"></a> lines<span class="sc">$</span>data</span>
-<span id="cb4-23"><a href="#cb4-23" tabindex="-1"></a><span class="sc">==</span><span class="er">=================</span></span>
-<span id="cb4-24"><a href="#cb4-24" tabindex="-1"></a> <span class="sc">!</span> each line corresponds to a different set of func and data</span>
-<span id="cb4-25"><a href="#cb4-25" tabindex="-1"></a>    data can be reached as below</span>
-<span id="cb4-26"><a href="#cb4-26" tabindex="-1"></a>        <span class="sc">-</span><span class="ot">-&gt;</span> obj<span class="sc">$</span>lines<span class="sc">$</span>data</span>
-<span id="cb4-27"><a href="#cb4-27" tabindex="-1"></a>  <span class="co"># A tibble: 3 × 8</span></span>
-<span id="cb4-28"><a href="#cb4-28" tabindex="-1"></a>  index        source base   comments      freq  fnc_str         fnc          data              </span>
-<span id="cb4-29"><a href="#cb4-29" tabindex="-1"></a>  <span class="sc">&lt;</span>chr<span class="sc">&gt;</span>        <span class="er">&lt;</span>chr<span class="sc">&gt;</span>  <span class="er">&lt;</span>chr<span class="sc">&gt;</span>  <span class="er">&lt;</span>chr<span class="sc">&gt;</span>         <span class="er">&lt;</span>chr<span class="sc">&gt;</span> <span class="er">&lt;</span>chr<span class="sc">&gt;</span>           <span class="er">&lt;</span>named list<span class="sc">&gt;</span> <span class="er">&lt;</span>list<span class="sc">&gt;</span>            </span>
-<span id="cb4-30"><a href="#cb4-30" tabindex="-1"></a><span class="dv">1</span> UNRATE       fred   series <span class="fu">fred</span> (series) null  fred_series_fnc <span class="sc">&lt;</span>fn<span class="sc">&gt;</span>         <span class="er">&lt;</span>tibble [<span class="dv">139</span> × <span class="dv">2</span>]<span class="sc">&gt;</span></span>
-<span id="cb4-31"><a href="#cb4-31" tabindex="-1"></a><span class="dv">2</span> bie_abreserv evds   table  <span class="fu">evds</span> (table)  null  evds_table_fnc  <span class="sc">&lt;</span>fn<span class="sc">&gt;</span>         <span class="er">&lt;</span>tibble [<span class="dv">138</span> × <span class="dv">6</span>]<span class="sc">&gt;</span></span>
-<span id="cb4-32"><a href="#cb4-32" tabindex="-1"></a><span class="dv">3</span> TP.AB.B1     evds   series <span class="fu">evds</span> (series) null  evds_series_fnc <span class="sc">&lt;</span>fn<span class="sc">&gt;</span>         <span class="er">&lt;</span>tibble [<span class="dv">138</span> × <span class="dv">2</span>]<span class="sc">&gt;</span></span>
-<span id="cb4-33"><a href="#cb4-33" tabindex="-1"></a> data</span>
-<span id="cb4-34"><a href="#cb4-34" tabindex="-1"></a><span class="sc">==</span><span class="er">=================</span></span>
-<span id="cb4-35"><a href="#cb4-35" tabindex="-1"></a>  (combined) data</span>
-<span id="cb4-36"><a href="#cb4-36" tabindex="-1"></a></span>
-<span id="cb4-37"><a href="#cb4-37" tabindex="-1"></a>    a combined data frame will be constructed</span>
-<span id="cb4-38"><a href="#cb4-38" tabindex="-1"></a>    combined data can be reached as</span>
-<span id="cb4-39"><a href="#cb4-39" tabindex="-1"></a>        <span class="sc">-</span><span class="ot">-&gt;</span> obj<span class="sc">$</span>data</span>
-<span id="cb4-40"><a href="#cb4-40" tabindex="-1"></a>  <span class="co"># A tibble: 138 × 8</span></span>
-<span id="cb4-41"><a href="#cb4-41" tabindex="-1"></a>   date       UNRATE TP_AB_B1 TP_AB_B2 TP_AB_B3 TP_AB_B4 TP_AB_B6 TP.AB.B1</span>
-<span id="cb4-42"><a href="#cb4-42" tabindex="-1"></a>   <span class="sc">&lt;</span>date<span class="sc">&gt;</span>      <span class="er">&lt;</span>dbl<span class="sc">&gt;</span>    <span class="er">&lt;</span>dbl<span class="sc">&gt;</span>    <span class="er">&lt;</span>dbl<span class="sc">&gt;</span>    <span class="er">&lt;</span>dbl<span class="sc">&gt;</span>    <span class="er">&lt;</span>dbl<span class="sc">&gt;</span>    <span class="er">&lt;</span>dbl<span class="sc">&gt;</span>    <span class="er">&lt;</span>dbl<span class="sc">&gt;</span></span>
-<span id="cb4-43"><a href="#cb4-43" tabindex="-1"></a> <span class="dv">1</span> <span class="dv">2012-06-01</span>    <span class="fl">8.2</span>   <span class="fl">12438.</span>   <span class="fl">83062.</span>   <span class="fl">17704.</span>   <span class="fl">95500.</span>  <span class="fl">113204.</span>   <span class="fl">12438.</span></span>
-<span id="cb4-44"><a href="#cb4-44" tabindex="-1"></a> <span class="dv">2</span> <span class="dv">2012-07-01</span>    <span class="fl">8.2</span>   <span class="fl">15068.</span>   <span class="fl">85044.</span>   <span class="fl">17526.</span>  <span class="fl">100113.</span>  <span class="fl">117639.</span>   <span class="fl">15068.</span></span>
-<span id="cb4-45"><a href="#cb4-45" tabindex="-1"></a> <span class="dv">3</span> <span class="dv">2012-08-01</span>    <span class="fl">8.1</span>   <span class="fl">15706.</span>   <span class="fl">93006.</span>   <span class="fl">16191.</span>  <span class="fl">108712.</span>  <span class="fl">124903.</span>   <span class="fl">15706.</span></span>
-<span id="cb4-46"><a href="#cb4-46" tabindex="-1"></a> <span class="dv">4</span> <span class="dv">2012-09-01</span>    <span class="fl">7.8</span>   <span class="fl">17289.</span>   <span class="dv">94797</span>    <span class="fl">16106.</span>  <span class="fl">112086.</span>  <span class="dv">128192</span>    <span class="fl">17289.</span></span>
-<span id="cb4-47"><a href="#cb4-47" tabindex="-1"></a> <span class="dv">5</span> <span class="dv">2012-10-01</span>    <span class="fl">7.8</span>   <span class="fl">17675.</span>   <span class="fl">99534.</span>   <span class="fl">14575.</span>  <span class="fl">117208.</span>  <span class="fl">131783.</span>   <span class="fl">17675.</span></span>
-<span id="cb4-48"><a href="#cb4-48" tabindex="-1"></a> <span class="dv">6</span> <span class="dv">2012-11-01</span>    <span class="fl">7.7</span>   <span class="fl">18200.</span>  <span class="fl">100162.</span>   <span class="fl">15532.</span>  <span class="fl">118362.</span>  <span class="fl">133894.</span>   <span class="fl">18200.</span></span>
-<span id="cb4-49"><a href="#cb4-49" tabindex="-1"></a> <span class="dv">7</span> <span class="dv">2012-12-01</span>    <span class="fl">7.9</span>   <span class="fl">19235.</span>   <span class="fl">99933.</span>   <span class="fl">18326.</span>  <span class="fl">119168.</span>  <span class="dv">137493</span>    <span class="fl">19235.</span></span>
-<span id="cb4-50"><a href="#cb4-50" tabindex="-1"></a> <span class="dv">8</span> <span class="dv">2013-01-01</span>    <span class="dv">8</span>     <span class="fl">19860.</span>  <span class="fl">104349.</span>   <span class="fl">15466.</span>  <span class="fl">124210.</span>  <span class="dv">139676</span>    <span class="fl">19860.</span></span>
-<span id="cb4-51"><a href="#cb4-51" tabindex="-1"></a> <span class="dv">9</span> <span class="dv">2013-02-01</span>    <span class="fl">7.7</span>   <span class="fl">19204.</span>  <span class="fl">104023.</span>   <span class="fl">14783.</span>  <span class="fl">123227.</span>  <span class="fl">138010.</span>   <span class="fl">19204.</span></span>
-<span id="cb4-52"><a href="#cb4-52" tabindex="-1"></a><span class="dv">10</span> <span class="dv">2013-03-01</span>    <span class="fl">7.5</span>   <span class="fl">21037.</span>  <span class="fl">105658.</span>   <span class="fl">15164.</span>  <span class="fl">126695.</span>  <span class="fl">141859.</span>   <span class="fl">21037.</span></span>
-<span id="cb4-53"><a href="#cb4-53" tabindex="-1"></a><span class="co"># ℹ 128 more rows</span></span>
-<span id="cb4-54"><a href="#cb4-54" tabindex="-1"></a><span class="co"># ℹ Use `print(n = ...)` to see more rows</span></span>
-<span id="cb4-55"><a href="#cb4-55" tabindex="-1"></a></span>
-<span id="cb4-56"><a href="#cb4-56" tabindex="-1"></a><span class="sc">==</span><span class="er">=======================================================</span></span></code></pre></div>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a>  </span>
-<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a>o <span class="ot">&lt;-</span> <span class="fu">get_series</span>(<span class="st">"bie_yssk"</span> , <span class="at">start_date =</span> <span class="st">"2010-01-01"</span>)</span>
-<span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a>o</span>
-<span id="cb5-4"><a href="#cb5-4" tabindex="-1"></a><span class="co"># ======================================vyos_GETPREP=======</span></span>
-<span id="cb5-5"><a href="#cb5-5" tabindex="-1"></a><span class="co">#     status      : completed</span></span>
-<span id="cb5-6"><a href="#cb5-6" tabindex="-1"></a><span class="co"># index       : bie_yssk</span></span>
-<span id="cb5-7"><a href="#cb5-7" tabindex="-1"></a><span class="co"># start_date  : 2010-01-01</span></span>
-<span id="cb5-8"><a href="#cb5-8" tabindex="-1"></a><span class="co"># end_date    : 2100-01-01</span></span>
-<span id="cb5-9"><a href="#cb5-9" tabindex="-1"></a><span class="co"># ................... resolved [completed] ..............</span></span>
-<span id="cb5-10"><a href="#cb5-10" tabindex="-1"></a><span class="co"># </span></span>
-<span id="cb5-11"><a href="#cb5-11" tabindex="-1"></a><span class="co"># ..................................</span></span>
-<span id="cb5-12"><a href="#cb5-12" tabindex="-1"></a><span class="co"># .........&gt; lines   .............</span></span>
-<span id="cb5-13"><a href="#cb5-13" tabindex="-1"></a><span class="co"># ..................................</span></span>
-<span id="cb5-14"><a href="#cb5-14" tabindex="-1"></a><span class="co"># # each line corresponds to a different set of func and data</span></span>
-<span id="cb5-15"><a href="#cb5-15" tabindex="-1"></a><span class="co"># data can be reached as below</span></span>
-<span id="cb5-16"><a href="#cb5-16" tabindex="-1"></a><span class="sc">&gt;</span> obj<span class="sc">$</span>lines<span class="sc">$</span>data</span>
-<span id="cb5-17"><a href="#cb5-17" tabindex="-1"></a><span class="co"># # A tibble: 1 × 8</span></span>
-<span id="cb5-18"><a href="#cb5-18" tabindex="-1"></a><span class="co"># index    source base  comments freq  fnc_str        fnc          data              </span></span>
-<span id="cb5-19"><a href="#cb5-19" tabindex="-1"></a><span class="co"># &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;          &lt;named list&gt; &lt;list&gt;            </span></span>
-<span id="cb5-20"><a href="#cb5-20" tabindex="-1"></a><span class="co">#     1 bie_yssk evds   table " "      null  evds_table_fnc &lt;fn&gt;         &lt;tibble [167 × 7]&gt;</span></span>
-<span id="cb5-21"><a href="#cb5-21" tabindex="-1"></a><span class="co">#     ..................................</span></span>
-<span id="cb5-22"><a href="#cb5-22" tabindex="-1"></a><span class="co"># .........&gt; (combined) data ...</span></span>
-<span id="cb5-23"><a href="#cb5-23" tabindex="-1"></a><span class="co"># ..................................</span></span>
-<span id="cb5-24"><a href="#cb5-24" tabindex="-1"></a><span class="co"># a combined data frame will be constructed</span></span>
-<span id="cb5-25"><a href="#cb5-25" tabindex="-1"></a><span class="co"># combined data can be reached as</span></span>
-<span id="cb5-26"><a href="#cb5-26" tabindex="-1"></a><span class="sc">&gt;</span> obj<span class="sc">$</span>data</span>
-<span id="cb5-27"><a href="#cb5-27" tabindex="-1"></a><span class="co"># # A tibble: 167 × 7</span></span>
-<span id="cb5-28"><a href="#cb5-28" tabindex="-1"></a><span class="co"># date       TP_YSSK_A1 TP_YSSK_A2 TP_YSSK_A3 TP_YSSK_A4 TP_YSSK_A5 TP_YSSK_A6</span></span>
-<span id="cb5-29"><a href="#cb5-29" tabindex="-1"></a><span class="co"># &lt;date&gt;          &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;</span></span>
-<span id="cb5-30"><a href="#cb5-30" tabindex="-1"></a><span class="co">#     1 2010-01-01       7928       6126       5020       5644      51100      75818</span></span>
-<span id="cb5-31"><a href="#cb5-31" tabindex="-1"></a><span class="co"># 2 2010-02-01       7619       6030       4911       5521      50088      74168</span></span>
-<span id="cb5-32"><a href="#cb5-32" tabindex="-1"></a><span class="co"># 3 2010-03-01       7517       5998       4920       5534      49625      73595</span></span>
-<span id="cb5-33"><a href="#cb5-33" tabindex="-1"></a><span class="co"># 4 2010-04-01       7333       5822       4859       5435      49360      72809</span></span>
-<span id="cb5-34"><a href="#cb5-34" tabindex="-1"></a><span class="co"># 5 2010-05-01       7136       5510       4922       5266      48108      70942</span></span>
-<span id="cb5-35"><a href="#cb5-35" tabindex="-1"></a><span class="co"># 6 2010-06-01       6906       5257       4449       5277      47464      69353</span></span>
-<span id="cb5-36"><a href="#cb5-36" tabindex="-1"></a><span class="co"># 7 2010-07-01       6836       5363       4445       5396      49051      71092</span></span>
-<span id="cb5-37"><a href="#cb5-37" tabindex="-1"></a><span class="co"># 8 2010-08-01       6758       5291       4411       5281      48407      70148</span></span>
-<span id="cb5-38"><a href="#cb5-38" tabindex="-1"></a><span class="co"># 9 2010-09-01       6799       5200       4411       5375      50099      71885</span></span>
-<span id="cb5-39"><a href="#cb5-39" tabindex="-1"></a><span class="co"># 10 2010-10-01       6770       5094       4324       5358      51091      72637</span></span>
-<span id="cb5-40"><a href="#cb5-40" tabindex="-1"></a><span class="co"># # ℹ 157 more rows</span></span>
-<span id="cb5-41"><a href="#cb5-41" tabindex="-1"></a><span class="co"># # ℹ Use print(n = ...) to see more rows</span></span>
-<span id="cb5-42"><a href="#cb5-42" tabindex="-1"></a><span class="co"># ...........................................................</span></span>
-<span id="cb5-43"><a href="#cb5-43" tabindex="-1"></a><span class="co"># </span></span>
-<span id="cb5-44"><a href="#cb5-44" tabindex="-1"></a><span class="co"># =========================================================</span></span></code></pre></div>
+<span id="cb4-11"><a href="#cb4-11" tabindex="-1"></a><span class="co"># Display the results</span></span>
+<span id="cb4-12"><a href="#cb4-12" tabindex="-1"></a><span class="fu">print</span>(obj)</span>
+<span id="cb4-13"><a href="#cb4-13" tabindex="-1"></a></span>
+<span id="cb4-14"><a href="#cb4-14" tabindex="-1"></a><span class="sc">==</span><span class="er">====================================</span>vyos_GETPREP<span class="sc">==</span><span class="er">=====</span></span>
+<span id="cb4-15"><a href="#cb4-15" tabindex="-1"></a>  status      <span class="sc">:</span> completed</span>
+<span id="cb4-16"><a href="#cb4-16" tabindex="-1"></a>  index       <span class="sc">:</span> </span>
+<span id="cb4-17"><a href="#cb4-17" tabindex="-1"></a>    UNRATE        <span class="co">#fred (series)</span></span>
+<span id="cb4-18"><a href="#cb4-18" tabindex="-1"></a>    bie_abreserv  <span class="co">#evds (table)</span></span>
+<span id="cb4-19"><a href="#cb4-19" tabindex="-1"></a>    TP.AB.B1      <span class="co">#evds (series)</span></span>
+<span id="cb4-20"><a href="#cb4-20" tabindex="-1"></a></span>
+<span id="cb4-21"><a href="#cb4-21" tabindex="-1"></a>  start_date  <span class="sc">:</span> <span class="dv">2012</span><span class="sc">/</span><span class="dv">05</span><span class="sc">/</span><span class="dv">22</span></span>
+<span id="cb4-22"><a href="#cb4-22" tabindex="-1"></a>  end_date    <span class="sc">:</span> <span class="dv">2100-01-01</span></span>
+<span id="cb4-23"><a href="#cb4-23" tabindex="-1"></a>  status [completed]</span>
+<span id="cb4-24"><a href="#cb4-24" tabindex="-1"></a></span>
+<span id="cb4-25"><a href="#cb4-25" tabindex="-1"></a> lines<span class="sc">$</span>data</span>
+<span id="cb4-26"><a href="#cb4-26" tabindex="-1"></a><span class="sc">==</span><span class="er">=================</span></span>
+<span id="cb4-27"><a href="#cb4-27" tabindex="-1"></a> <span class="sc">!</span> each line corresponds to a different set of func and data</span>
+<span id="cb4-28"><a href="#cb4-28" tabindex="-1"></a>    data can be reached as below</span>
+<span id="cb4-29"><a href="#cb4-29" tabindex="-1"></a>        <span class="sc">-</span><span class="ot">-&gt;</span> obj<span class="sc">$</span>lines<span class="sc">$</span>data</span>
+<span id="cb4-30"><a href="#cb4-30" tabindex="-1"></a>  <span class="co"># A tibble: 3 × 8</span></span>
+<span id="cb4-31"><a href="#cb4-31" tabindex="-1"></a>  index        source base   comments      freq  fnc_str         fnc          data              </span>
+<span id="cb4-32"><a href="#cb4-32" tabindex="-1"></a>  <span class="sc">&lt;</span>chr<span class="sc">&gt;</span>        <span class="er">&lt;</span>chr<span class="sc">&gt;</span>  <span class="er">&lt;</span>chr<span class="sc">&gt;</span>  <span class="er">&lt;</span>chr<span class="sc">&gt;</span>         <span class="er">&lt;</span>chr<span class="sc">&gt;</span> <span class="er">&lt;</span>chr<span class="sc">&gt;</span>           <span class="er">&lt;</span>named list<span class="sc">&gt;</span> <span class="er">&lt;</span>list<span class="sc">&gt;</span>            </span>
+<span id="cb4-33"><a href="#cb4-33" tabindex="-1"></a><span class="dv">1</span> UNRATE       fred   series <span class="fu">fred</span> (series) null  fred_series_fnc <span class="sc">&lt;</span>fn<span class="sc">&gt;</span>         <span class="er">&lt;</span>tibble [<span class="dv">139</span> × <span class="dv">2</span>]<span class="sc">&gt;</span></span>
+<span id="cb4-34"><a href="#cb4-34" tabindex="-1"></a><span class="dv">2</span> bie_abreserv evds   table  <span class="fu">evds</span> (table)  null  evds_table_fnc  <span class="sc">&lt;</span>fn<span class="sc">&gt;</span>         <span class="er">&lt;</span>tibble [<span class="dv">138</span> × <span class="dv">6</span>]<span class="sc">&gt;</span></span>
+<span id="cb4-35"><a href="#cb4-35" tabindex="-1"></a><span class="dv">3</span> TP.AB.B1     evds   series <span class="fu">evds</span> (series) null  evds_series_fnc <span class="sc">&lt;</span>fn<span class="sc">&gt;</span>         <span class="er">&lt;</span>tibble [<span class="dv">138</span> × <span class="dv">2</span>]<span class="sc">&gt;</span></span>
+<span id="cb4-36"><a href="#cb4-36" tabindex="-1"></a> data</span>
+<span id="cb4-37"><a href="#cb4-37" tabindex="-1"></a><span class="sc">==</span><span class="er">=================</span></span>
+<span id="cb4-38"><a href="#cb4-38" tabindex="-1"></a>  (combined) data</span>
+<span id="cb4-39"><a href="#cb4-39" tabindex="-1"></a></span>
+<span id="cb4-40"><a href="#cb4-40" tabindex="-1"></a>    a combined data frame will be constructed</span>
+<span id="cb4-41"><a href="#cb4-41" tabindex="-1"></a>    combined data can be reached as</span>
+<span id="cb4-42"><a href="#cb4-42" tabindex="-1"></a>        <span class="sc">-</span><span class="ot">-&gt;</span> obj<span class="sc">$</span>data</span>
+<span id="cb4-43"><a href="#cb4-43" tabindex="-1"></a>  <span class="co"># A tibble: 138 × 8</span></span>
+<span id="cb4-44"><a href="#cb4-44" tabindex="-1"></a>   date       UNRATE TP_AB_B1 TP_AB_B2 TP_AB_B3 TP_AB_B4 TP_AB_B6 TP.AB.B1</span>
+<span id="cb4-45"><a href="#cb4-45" tabindex="-1"></a>   <span class="sc">&lt;</span>date<span class="sc">&gt;</span>      <span class="er">&lt;</span>dbl<span class="sc">&gt;</span>    <span class="er">&lt;</span>dbl<span class="sc">&gt;</span>    <span class="er">&lt;</span>dbl<span class="sc">&gt;</span>    <span class="er">&lt;</span>dbl<span class="sc">&gt;</span>    <span class="er">&lt;</span>dbl<span class="sc">&gt;</span>    <span class="er">&lt;</span>dbl<span class="sc">&gt;</span>    <span class="er">&lt;</span>dbl<span class="sc">&gt;</span></span>
+<span id="cb4-46"><a href="#cb4-46" tabindex="-1"></a> <span class="dv">1</span> <span class="dv">2012-06-01</span>    <span class="fl">8.2</span>   <span class="fl">12438.</span>   <span class="fl">83062.</span>   <span class="fl">17704.</span>   <span class="fl">95500.</span>  <span class="fl">113204.</span>   <span class="fl">12438.</span></span>
+<span id="cb4-47"><a href="#cb4-47" tabindex="-1"></a> <span class="dv">2</span> <span class="dv">2012-07-01</span>    <span class="fl">8.2</span>   <span class="fl">15068.</span>   <span class="fl">85044.</span>   <span class="fl">17526.</span>  <span class="fl">100113.</span>  <span class="fl">117639.</span>   <span class="fl">15068.</span></span>
+<span id="cb4-48"><a href="#cb4-48" tabindex="-1"></a> <span class="dv">3</span> <span class="dv">2012-08-01</span>    <span class="fl">8.1</span>   <span class="fl">15706.</span>   <span class="fl">93006.</span>   <span class="fl">16191.</span>  <span class="fl">108712.</span>  <span class="fl">124903.</span>   <span class="fl">15706.</span></span>
+<span id="cb4-49"><a href="#cb4-49" tabindex="-1"></a> <span class="dv">4</span> <span class="dv">2012-09-01</span>    <span class="fl">7.8</span>   <span class="fl">17289.</span>   <span class="dv">94797</span>    <span class="fl">16106.</span>  <span class="fl">112086.</span>  <span class="dv">128192</span>    <span class="fl">17289.</span></span>
+<span id="cb4-50"><a href="#cb4-50" tabindex="-1"></a> <span class="dv">5</span> <span class="dv">2012-10-01</span>    <span class="fl">7.8</span>   <span class="fl">17675.</span>   <span class="fl">99534.</span>   <span class="fl">14575.</span>  <span class="fl">117208.</span>  <span class="fl">131783.</span>   <span class="fl">17675.</span></span>
+<span id="cb4-51"><a href="#cb4-51" tabindex="-1"></a> <span class="dv">6</span> <span class="dv">2012-11-01</span>    <span class="fl">7.7</span>   <span class="fl">18200.</span>  <span class="fl">100162.</span>   <span class="fl">15532.</span>  <span class="fl">118362.</span>  <span class="fl">133894.</span>   <span class="fl">18200.</span></span>
+<span id="cb4-52"><a href="#cb4-52" tabindex="-1"></a> <span class="dv">7</span> <span class="dv">2012-12-01</span>    <span class="fl">7.9</span>   <span class="fl">19235.</span>   <span class="fl">99933.</span>   <span class="fl">18326.</span>  <span class="fl">119168.</span>  <span class="dv">137493</span>    <span class="fl">19235.</span></span>
+<span id="cb4-53"><a href="#cb4-53" tabindex="-1"></a> <span class="dv">8</span> <span class="dv">2013-01-01</span>    <span class="dv">8</span>     <span class="fl">19860.</span>  <span class="fl">104349.</span>   <span class="fl">15466.</span>  <span class="fl">124210.</span>  <span class="dv">139676</span>    <span class="fl">19860.</span></span>
+<span id="cb4-54"><a href="#cb4-54" tabindex="-1"></a> <span class="dv">9</span> <span class="dv">2013-02-01</span>    <span class="fl">7.7</span>   <span class="fl">19204.</span>  <span class="fl">104023.</span>   <span class="fl">14783.</span>  <span class="fl">123227.</span>  <span class="fl">138010.</span>   <span class="fl">19204.</span></span>
+<span id="cb4-55"><a href="#cb4-55" tabindex="-1"></a><span class="dv">10</span> <span class="dv">2013-03-01</span>    <span class="fl">7.5</span>   <span class="fl">21037.</span>  <span class="fl">105658.</span>   <span class="fl">15164.</span>  <span class="fl">126695.</span>  <span class="fl">141859.</span>   <span class="fl">21037.</span></span>
+<span id="cb4-56"><a href="#cb4-56" tabindex="-1"></a><span class="co"># ℹ 128 more rows</span></span>
+<span id="cb4-57"><a href="#cb4-57" tabindex="-1"></a><span class="co"># ℹ Use `print(n = ...)` to see more rows</span></span>
+<span id="cb4-58"><a href="#cb4-58" tabindex="-1"></a></span>
+<span id="cb4-59"><a href="#cb4-59" tabindex="-1"></a><span class="sc">==</span><span class="er">=======================================================</span></span></code></pre></div>
+</div>
+<div class="section level3">
+<h3 id="additional-usage-examples">Additional Usage Examples<a class="anchor" aria-label="anchor" href="#additional-usage-examples"></a>
+</h3>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Fetch data for a specific index</span></span>
+<span><span class="va">o</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/get_series.html">get_series</a></span><span class="op">(</span><span class="st">"bie_yssk"</span>, start_date <span class="op">=</span> <span class="st">"2010-01-01"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">o</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Fetch data for multiple indexes using a vector or template</span></span>
+<span><span class="va">index_vector</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"TP_YSSK_A1"</span>, <span class="st">"TP_YSSK_A2"</span><span class="op">)</span></span>
+<span><span class="va">o</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/get_series.html">get_series</a></span><span class="op">(</span><span class="va">index_vector</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">o</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Remove NA values from the data frame</span></span>
+<span><span class="va">df_raw</span> <span class="op">&lt;-</span> <span class="va">o</span><span class="op">$</span><span class="va">data</span></span>
+<span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/remove_na_safe.html">remove_na_safe</a></span><span class="op">(</span><span class="va">df_raw</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Create a lagged data frame</span></span>
+<span><span class="va">df2</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/lag_df.html">lag_df</a></span><span class="op">(</span><span class="va">df</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>TP_YSSK_A1 <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, TP_YSSK_A2 <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">6</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">df2</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a>  </span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a>o <span class="ot">&lt;-</span> <span class="fu">get_series</span>(<span class="st">"bie_yssk"</span> , <span class="at">start_date =</span> <span class="st">"2010-01-01"</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a>o</span>
+<span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a><span class="co"># ======================================vyos_GETPREP=======</span></span>
+<span id="cb6-5"><a href="#cb6-5" tabindex="-1"></a><span class="co">#     status      : completed</span></span>
+<span id="cb6-6"><a href="#cb6-6" tabindex="-1"></a><span class="co"># index       : bie_yssk</span></span>
+<span id="cb6-7"><a href="#cb6-7" tabindex="-1"></a><span class="co"># start_date  : 2010-01-01</span></span>
+<span id="cb6-8"><a href="#cb6-8" tabindex="-1"></a><span class="co"># end_date    : 2100-01-01</span></span>
+<span id="cb6-9"><a href="#cb6-9" tabindex="-1"></a><span class="co"># ................... resolved [completed] ..............</span></span>
+<span id="cb6-10"><a href="#cb6-10" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb6-11"><a href="#cb6-11" tabindex="-1"></a><span class="co"># ..................................</span></span>
+<span id="cb6-12"><a href="#cb6-12" tabindex="-1"></a><span class="co"># .........&gt; lines   .............</span></span>
+<span id="cb6-13"><a href="#cb6-13" tabindex="-1"></a><span class="co"># ..................................</span></span>
+<span id="cb6-14"><a href="#cb6-14" tabindex="-1"></a><span class="co"># # each line corresponds to a different set of func and data</span></span>
+<span id="cb6-15"><a href="#cb6-15" tabindex="-1"></a><span class="co"># data can be reached as below</span></span>
+<span id="cb6-16"><a href="#cb6-16" tabindex="-1"></a><span class="sc">&gt;</span> obj<span class="sc">$</span>lines<span class="sc">$</span>data</span>
+<span id="cb6-17"><a href="#cb6-17" tabindex="-1"></a><span class="co"># # A tibble: 1 × 8</span></span>
+<span id="cb6-18"><a href="#cb6-18" tabindex="-1"></a><span class="co"># index    source base  comments freq  fnc_str        fnc          data              </span></span>
+<span id="cb6-19"><a href="#cb6-19" tabindex="-1"></a><span class="co"># &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;          &lt;named list&gt; &lt;list&gt;            </span></span>
+<span id="cb6-20"><a href="#cb6-20" tabindex="-1"></a><span class="co">#     1 bie_yssk evds   table " "      null  evds_table_fnc &lt;fn&gt;         &lt;tibble [167 × 7]&gt;</span></span>
+<span id="cb6-21"><a href="#cb6-21" tabindex="-1"></a><span class="co">#     ..................................</span></span>
+<span id="cb6-22"><a href="#cb6-22" tabindex="-1"></a><span class="co"># .........&gt; (combined) data ...</span></span>
+<span id="cb6-23"><a href="#cb6-23" tabindex="-1"></a><span class="co"># ..................................</span></span>
+<span id="cb6-24"><a href="#cb6-24" tabindex="-1"></a><span class="co"># a combined data frame will be constructed</span></span>
+<span id="cb6-25"><a href="#cb6-25" tabindex="-1"></a><span class="co"># combined data can be reached as</span></span>
+<span id="cb6-26"><a href="#cb6-26" tabindex="-1"></a><span class="sc">&gt;</span> obj<span class="sc">$</span>data</span>
+<span id="cb6-27"><a href="#cb6-27" tabindex="-1"></a><span class="co"># # A tibble: 167 × 7</span></span>
+<span id="cb6-28"><a href="#cb6-28" tabindex="-1"></a><span class="co"># date       TP_YSSK_A1 TP_YSSK_A2 TP_YSSK_A3 TP_YSSK_A4 TP_YSSK_A5 TP_YSSK_A6</span></span>
+<span id="cb6-29"><a href="#cb6-29" tabindex="-1"></a><span class="co"># &lt;date&gt;          &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;</span></span>
+<span id="cb6-30"><a href="#cb6-30" tabindex="-1"></a><span class="co">#     1 2010-01-01       7928       6126       5020       5644      51100      75818</span></span>
+<span id="cb6-31"><a href="#cb6-31" tabindex="-1"></a><span class="co"># 2 2010-02-01       7619       6030       4911       5521      50088      74168</span></span>
+<span id="cb6-32"><a href="#cb6-32" tabindex="-1"></a><span class="co"># 3 2010-03-01       7517       5998       4920       5534      49625      73595</span></span>
+<span id="cb6-33"><a href="#cb6-33" tabindex="-1"></a><span class="co"># 4 2010-04-01       7333       5822       4859       5435      49360      72809</span></span>
+<span id="cb6-34"><a href="#cb6-34" tabindex="-1"></a><span class="co"># 5 2010-05-01       7136       5510       4922       5266      48108      70942</span></span>
+<span id="cb6-35"><a href="#cb6-35" tabindex="-1"></a><span class="co"># 6 2010-06-01       6906       5257       4449       5277      47464      69353</span></span>
+<span id="cb6-36"><a href="#cb6-36" tabindex="-1"></a><span class="co"># 7 2010-07-01       6836       5363       4445       5396      49051      71092</span></span>
+<span id="cb6-37"><a href="#cb6-37" tabindex="-1"></a><span class="co"># 8 2010-08-01       6758       5291       4411       5281      48407      70148</span></span>
+<span id="cb6-38"><a href="#cb6-38" tabindex="-1"></a><span class="co"># 9 2010-09-01       6799       5200       4411       5375      50099      71885</span></span>
+<span id="cb6-39"><a href="#cb6-39" tabindex="-1"></a><span class="co"># 10 2010-10-01       6770       5094       4324       5358      51091      72637</span></span>
+<span id="cb6-40"><a href="#cb6-40" tabindex="-1"></a><span class="co"># # ℹ 157 more rows</span></span>
+<span id="cb6-41"><a href="#cb6-41" tabindex="-1"></a><span class="co"># # ℹ Use print(n = ...) to see more rows</span></span>
+<span id="cb6-42"><a href="#cb6-42" tabindex="-1"></a><span class="co"># ...........................................................</span></span>
+<span id="cb6-43"><a href="#cb6-43" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb6-44"><a href="#cb6-44" tabindex="-1"></a><span class="co"># =========================================================</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="indexes-can-be-given-as-a-vector-or-a-string-template">indexes can be given as a vector or a string template<a class="anchor" aria-label="anchor" href="#indexes-can-be-given-as-a-vector-or-a-string-template"></a>
 </h3>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="va">index_vector</span>  <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span> <span class="st">"TP_YSSK_A1"</span> , <span class="st">"TP_YSSK_A2"</span> <span class="op">)</span></span>
 <span><span class="co"># or as a template it gives same result </span></span>
@@ -237,7 +264,7 @@
 <blockquote>
 <p>combined data frame can be accessed via obj<span class="math inline"><em>d</em><em>a</em><em>t</em><em>a</em><em>s</em><em>e</em><em>e</em><em>a</em><em>l</em><em>s</em><em>o</em><em>o</em><em>b</em><em>j</em></span>lines</p>
 </blockquote>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">df_raw</span> <span class="op">&lt;-</span> <span class="va">o</span><span class="op">$</span><span class="va">data</span></span>
 <span></span>
 <span><span class="va">df_raw</span></span>
@@ -263,7 +290,7 @@
 <blockquote>
 <p>removes NA values from the data frame if all the columns are NA to a certain point and after a certain point. When there is any value that is not NA in a row it continues without removing any row until all the columns of a row is NA again to protect the meaningful date sequence of the time series of the current data frame.</p>
 </blockquote>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/remove_na_safe.html">remove_na_safe</a></span><span class="op">(</span><span class="va">df_raw</span> <span class="op">)</span></span>
 <span><span class="va">df</span> </span>
 <span><span class="co"># # A tibble: 263 × 3</span></span>
@@ -288,7 +315,7 @@
 <blockquote>
 <p>it takes a data frame and a list of column names and lag sequences, it creates a data frame with lagged values of the column names given if the column name exists in data frame.</p>
 </blockquote>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">df2</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/lag_df.html">lag_df</a></span><span class="op">(</span> <span class="va">df</span> , <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span> TP_YSSK_A1 <span class="op">=</span> <span class="fl">1</span> <span class="op">:</span> <span class="fl">3</span> , TP_YSSK_A2 <span class="op">=</span> <span class="fl">1</span> <span class="op">:</span> <span class="fl">6</span> <span class="op">)</span> <span class="op">)</span></span>
 <span><span class="va">df2</span></span>
 <span><span class="co"># # A tibble: 263 × 12</span></span>
@@ -308,9 +335,9 @@
 <span><span class="co"># # ℹ 4 more variables: TP_YSSK_A2_lag_3 &lt;dbl&gt;, TP_YSSK_A2_lag_4 &lt;dbl&gt;, TP_YSSK_A2_lag_5 &lt;dbl&gt;, TP_YSSK_A2_lag_6 &lt;dbl&gt;</span></span>
 <span><span class="co"># # ℹ Use `print(n = ...)` to see more rows</span></span></code></pre></div>
 <blockquote>
-<p>Does not require source names for IDs. Function uses hints to figures out which sources to requests from the index IDs given.</p>
+<p><code>get_series</code> function does not require source names for IDs. The function uses hints to figure out which sources to request from for the index IDs given.</p>
 </blockquote>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">index_template</span> <span class="op">&lt;-</span> <span class="st">"</span></span>
 <span><span class="st">TP_YSSK_A1</span></span>
 <span><span class="st">TP_YSSK_A2</span></span>
@@ -373,75 +400,77 @@
 <blockquote>
 <p>individual data frames can be reached via <code>object$lines$data</code></p>
 </blockquote>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="sc">&gt;</span> o<span class="sc">$</span>lines</span>
-<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a><span class="co"># # A tibble: 3 × 8</span></span>
-<span id="cb11-3"><a href="#cb11-3" tabindex="-1"></a><span class="co">#   index        source base   comments      freq  fnc_str         fnc          data              </span></span>
-<span id="cb11-4"><a href="#cb11-4" tabindex="-1"></a><span class="co">#   &lt;chr&gt;        &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;         &lt;chr&gt; &lt;chr&gt;           &lt;named list&gt; &lt;list&gt;            </span></span>
-<span id="cb11-5"><a href="#cb11-5" tabindex="-1"></a><span class="co"># 1 UNRATE       fred   series fred (series) null  fred_series_fnc &lt;fn&gt;         &lt;tibble [228 × 2]&gt;</span></span>
-<span id="cb11-6"><a href="#cb11-6" tabindex="-1"></a><span class="co"># 2 bie_abreserv evds   table  evds (table)  null  evds_table_fnc  &lt;fn&gt;         &lt;tibble [287 × 6]&gt;</span></span>
-<span id="cb11-7"><a href="#cb11-7" tabindex="-1"></a><span class="co"># 3 TP.AB.B1     evds   series evds (series) null  evds_series_fnc &lt;fn&gt;         &lt;tibble [287 × 2]&gt;</span></span>
-<span id="cb11-8"><a href="#cb11-8" tabindex="-1"></a><span class="sc">&gt;</span> o<span class="sc">$</span>lines<span class="sc">$</span>data</span>
-<span id="cb11-9"><a href="#cb11-9" tabindex="-1"></a><span class="co"># [[1]]</span></span>
-<span id="cb11-10"><a href="#cb11-10" tabindex="-1"></a><span class="co"># # A tibble: 228 × 2</span></span>
-<span id="cb11-11"><a href="#cb11-11" tabindex="-1"></a><span class="co">#    date       UNRATE</span></span>
-<span id="cb11-12"><a href="#cb11-12" tabindex="-1"></a><span class="co">#    &lt;date&gt;      &lt;dbl&gt;</span></span>
-<span id="cb11-13"><a href="#cb11-13" tabindex="-1"></a><span class="co">#  1 2005-01-01    5.3</span></span>
-<span id="cb11-14"><a href="#cb11-14" tabindex="-1"></a><span class="co">#  2 2005-02-01    5.4</span></span>
-<span id="cb11-15"><a href="#cb11-15" tabindex="-1"></a><span class="co">#  3 2005-03-01    5.2</span></span>
-<span id="cb11-16"><a href="#cb11-16" tabindex="-1"></a><span class="co">#  4 2005-04-01    5.2</span></span>
-<span id="cb11-17"><a href="#cb11-17" tabindex="-1"></a><span class="co">#  5 2005-05-01    5.1</span></span>
-<span id="cb11-18"><a href="#cb11-18" tabindex="-1"></a><span class="co">#  6 2005-06-01    5  </span></span>
-<span id="cb11-19"><a href="#cb11-19" tabindex="-1"></a><span class="co">#  7 2005-07-01    5  </span></span>
-<span id="cb11-20"><a href="#cb11-20" tabindex="-1"></a><span class="co">#  8 2005-08-01    4.9</span></span>
-<span id="cb11-21"><a href="#cb11-21" tabindex="-1"></a><span class="co">#  9 2005-09-01    5  </span></span>
-<span id="cb11-22"><a href="#cb11-22" tabindex="-1"></a><span class="co"># 10 2005-10-01    5  </span></span>
-<span id="cb11-23"><a href="#cb11-23" tabindex="-1"></a><span class="co"># # ℹ 218 more rows</span></span>
-<span id="cb11-24"><a href="#cb11-24" tabindex="-1"></a><span class="co"># # ℹ Use `print(n = ...)` to see more rows</span></span>
-<span id="cb11-25"><a href="#cb11-25" tabindex="-1"></a><span class="co"># </span></span>
-<span id="cb11-26"><a href="#cb11-26" tabindex="-1"></a><span class="co"># [[2]]</span></span>
-<span id="cb11-27"><a href="#cb11-27" tabindex="-1"></a><span class="co"># # A tibble: 287 × 6</span></span>
-<span id="cb11-28"><a href="#cb11-28" tabindex="-1"></a><span class="co">#    date       TP_AB_B1 TP_AB_B2 TP_AB_B3 TP_AB_B4 TP_AB_B6</span></span>
-<span id="cb11-29"><a href="#cb11-29" tabindex="-1"></a><span class="co">#    &lt;date&gt;        &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;</span></span>
-<span id="cb11-30"><a href="#cb11-30" tabindex="-1"></a><span class="co">#  1 2000-01-01    1011    22859.    8943.   23870.   32812.</span></span>
-<span id="cb11-31"><a href="#cb11-31" tabindex="-1"></a><span class="co">#  2 2000-02-01    1011    22907.    8296.   23918.   32214.</span></span>
-<span id="cb11-32"><a href="#cb11-32" tabindex="-1"></a><span class="co">#  3 2000-03-01    1011.   22926.    9817.   23937.   33754.</span></span>
-<span id="cb11-33"><a href="#cb11-33" tabindex="-1"></a><span class="co">#  4 2000-04-01    1011.   22337     8579.   23348.   31926.</span></span>
-<span id="cb11-34"><a href="#cb11-34" tabindex="-1"></a><span class="co">#  5 2000-05-01    1011.   22950.    8451.   23961.   32412.</span></span>
-<span id="cb11-35"><a href="#cb11-35" tabindex="-1"></a><span class="co">#  6 2000-06-01    1011.   24547.    9270.   25558.   34827.</span></span>
-<span id="cb11-36"><a href="#cb11-36" tabindex="-1"></a><span class="co">#  7 2000-07-01    1010.   24477.   10575.   25487    36062.</span></span>
-<span id="cb11-37"><a href="#cb11-37" tabindex="-1"></a><span class="co">#  8 2000-08-01    1033    24457    10146.   25490    35636.</span></span>
-<span id="cb11-38"><a href="#cb11-38" tabindex="-1"></a><span class="co">#  9 2000-09-01    1025    24160    10715.   25185    35900.</span></span>
-<span id="cb11-39"><a href="#cb11-39" tabindex="-1"></a><span class="co"># 10 2000-10-01     988    23593     9970.   24581    34551.</span></span>
-<span id="cb11-40"><a href="#cb11-40" tabindex="-1"></a><span class="co"># # ℹ 277 more rows</span></span>
-<span id="cb11-41"><a href="#cb11-41" tabindex="-1"></a><span class="co"># # ℹ Use `print(n = ...)` to see more rows</span></span>
-<span id="cb11-42"><a href="#cb11-42" tabindex="-1"></a><span class="co"># </span></span>
-<span id="cb11-43"><a href="#cb11-43" tabindex="-1"></a><span class="co"># [[3]]</span></span>
-<span id="cb11-44"><a href="#cb11-44" tabindex="-1"></a><span class="co"># # A tibble: 287 × 2</span></span>
-<span id="cb11-45"><a href="#cb11-45" tabindex="-1"></a><span class="co">#    date       TP.AB.B1</span></span>
-<span id="cb11-46"><a href="#cb11-46" tabindex="-1"></a><span class="co">#    &lt;date&gt;        &lt;dbl&gt;</span></span>
-<span id="cb11-47"><a href="#cb11-47" tabindex="-1"></a><span class="co">#  1 2000-01-01    1011 </span></span>
-<span id="cb11-48"><a href="#cb11-48" tabindex="-1"></a><span class="co">#  2 2000-02-01    1011 </span></span>
-<span id="cb11-49"><a href="#cb11-49" tabindex="-1"></a><span class="co">#  3 2000-03-01    1011.</span></span>
-<span id="cb11-50"><a href="#cb11-50" tabindex="-1"></a><span class="co">#  4 2000-04-01    1011.</span></span>
-<span id="cb11-51"><a href="#cb11-51" tabindex="-1"></a><span class="co">#  5 2000-05-01    1011.</span></span>
-<span id="cb11-52"><a href="#cb11-52" tabindex="-1"></a><span class="co">#  6 2000-06-01    1011.</span></span>
-<span id="cb11-53"><a href="#cb11-53" tabindex="-1"></a><span class="co">#  7 2000-07-01    1010.</span></span>
-<span id="cb11-54"><a href="#cb11-54" tabindex="-1"></a><span class="co">#  8 2000-08-01    1033 </span></span>
-<span id="cb11-55"><a href="#cb11-55" tabindex="-1"></a><span class="co">#  9 2000-09-01    1025 </span></span>
-<span id="cb11-56"><a href="#cb11-56" tabindex="-1"></a><span class="co"># 10 2000-10-01     988 </span></span>
-<span id="cb11-57"><a href="#cb11-57" tabindex="-1"></a><span class="co"># # ℹ 277 more rows</span></span>
-<span id="cb11-58"><a href="#cb11-58" tabindex="-1"></a><span class="co"># # ℹ Use `print(n = ...)` to see more rows</span></span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="sc">&gt;</span> o<span class="sc">$</span>lines</span>
+<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a><span class="co"># # A tibble: 3 × 8</span></span>
+<span id="cb12-3"><a href="#cb12-3" tabindex="-1"></a><span class="co">#   index        source base   comments      freq  fnc_str         fnc          data              </span></span>
+<span id="cb12-4"><a href="#cb12-4" tabindex="-1"></a><span class="co">#   &lt;chr&gt;        &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;         &lt;chr&gt; &lt;chr&gt;           &lt;named list&gt; &lt;list&gt;            </span></span>
+<span id="cb12-5"><a href="#cb12-5" tabindex="-1"></a><span class="co"># 1 UNRATE       fred   series fred (series) null  fred_series_fnc &lt;fn&gt;         &lt;tibble [228 × 2]&gt;</span></span>
+<span id="cb12-6"><a href="#cb12-6" tabindex="-1"></a><span class="co"># 2 bie_abreserv evds   table  evds (table)  null  evds_table_fnc  &lt;fn&gt;         &lt;tibble [287 × 6]&gt;</span></span>
+<span id="cb12-7"><a href="#cb12-7" tabindex="-1"></a><span class="co"># 3 TP.AB.B1     evds   series evds (series) null  evds_series_fnc &lt;fn&gt;         &lt;tibble [287 × 2]&gt;</span></span>
+<span id="cb12-8"><a href="#cb12-8" tabindex="-1"></a><span class="sc">&gt;</span> o<span class="sc">$</span>lines<span class="sc">$</span>data</span>
+<span id="cb12-9"><a href="#cb12-9" tabindex="-1"></a><span class="co"># [[1]]</span></span>
+<span id="cb12-10"><a href="#cb12-10" tabindex="-1"></a><span class="co"># # A tibble: 228 × 2</span></span>
+<span id="cb12-11"><a href="#cb12-11" tabindex="-1"></a><span class="co">#    date       UNRATE</span></span>
+<span id="cb12-12"><a href="#cb12-12" tabindex="-1"></a><span class="co">#    &lt;date&gt;      &lt;dbl&gt;</span></span>
+<span id="cb12-13"><a href="#cb12-13" tabindex="-1"></a><span class="co">#  1 2005-01-01    5.3</span></span>
+<span id="cb12-14"><a href="#cb12-14" tabindex="-1"></a><span class="co">#  2 2005-02-01    5.4</span></span>
+<span id="cb12-15"><a href="#cb12-15" tabindex="-1"></a><span class="co">#  3 2005-03-01    5.2</span></span>
+<span id="cb12-16"><a href="#cb12-16" tabindex="-1"></a><span class="co">#  4 2005-04-01    5.2</span></span>
+<span id="cb12-17"><a href="#cb12-17" tabindex="-1"></a><span class="co">#  5 2005-05-01    5.1</span></span>
+<span id="cb12-18"><a href="#cb12-18" tabindex="-1"></a><span class="co">#  6 2005-06-01    5  </span></span>
+<span id="cb12-19"><a href="#cb12-19" tabindex="-1"></a><span class="co">#  7 2005-07-01    5  </span></span>
+<span id="cb12-20"><a href="#cb12-20" tabindex="-1"></a><span class="co">#  8 2005-08-01    4.9</span></span>
+<span id="cb12-21"><a href="#cb12-21" tabindex="-1"></a><span class="co">#  9 2005-09-01    5  </span></span>
+<span id="cb12-22"><a href="#cb12-22" tabindex="-1"></a><span class="co"># 10 2005-10-01    5  </span></span>
+<span id="cb12-23"><a href="#cb12-23" tabindex="-1"></a><span class="co"># # ℹ 218 more rows</span></span>
+<span id="cb12-24"><a href="#cb12-24" tabindex="-1"></a><span class="co"># # ℹ Use `print(n = ...)` to see more rows</span></span>
+<span id="cb12-25"><a href="#cb12-25" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb12-26"><a href="#cb12-26" tabindex="-1"></a><span class="co"># [[2]]</span></span>
+<span id="cb12-27"><a href="#cb12-27" tabindex="-1"></a><span class="co"># # A tibble: 287 × 6</span></span>
+<span id="cb12-28"><a href="#cb12-28" tabindex="-1"></a><span class="co">#    date       TP_AB_B1 TP_AB_B2 TP_AB_B3 TP_AB_B4 TP_AB_B6</span></span>
+<span id="cb12-29"><a href="#cb12-29" tabindex="-1"></a><span class="co">#    &lt;date&gt;        &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;</span></span>
+<span id="cb12-30"><a href="#cb12-30" tabindex="-1"></a><span class="co">#  1 2000-01-01    1011    22859.    8943.   23870.   32812.</span></span>
+<span id="cb12-31"><a href="#cb12-31" tabindex="-1"></a><span class="co">#  2 2000-02-01    1011    22907.    8296.   23918.   32214.</span></span>
+<span id="cb12-32"><a href="#cb12-32" tabindex="-1"></a><span class="co">#  3 2000-03-01    1011.   22926.    9817.   23937.   33754.</span></span>
+<span id="cb12-33"><a href="#cb12-33" tabindex="-1"></a><span class="co">#  4 2000-04-01    1011.   22337     8579.   23348.   31926.</span></span>
+<span id="cb12-34"><a href="#cb12-34" tabindex="-1"></a><span class="co">#  5 2000-05-01    1011.   22950.    8451.   23961.   32412.</span></span>
+<span id="cb12-35"><a href="#cb12-35" tabindex="-1"></a><span class="co">#  6 2000-06-01    1011.   24547.    9270.   25558.   34827.</span></span>
+<span id="cb12-36"><a href="#cb12-36" tabindex="-1"></a><span class="co">#  7 2000-07-01    1010.   24477.   10575.   25487    36062.</span></span>
+<span id="cb12-37"><a href="#cb12-37" tabindex="-1"></a><span class="co">#  8 2000-08-01    1033    24457    10146.   25490    35636.</span></span>
+<span id="cb12-38"><a href="#cb12-38" tabindex="-1"></a><span class="co">#  9 2000-09-01    1025    24160    10715.   25185    35900.</span></span>
+<span id="cb12-39"><a href="#cb12-39" tabindex="-1"></a><span class="co"># 10 2000-10-01     988    23593     9970.   24581    34551.</span></span>
+<span id="cb12-40"><a href="#cb12-40" tabindex="-1"></a><span class="co"># # ℹ 277 more rows</span></span>
+<span id="cb12-41"><a href="#cb12-41" tabindex="-1"></a><span class="co"># # ℹ Use `print(n = ...)` to see more rows</span></span>
+<span id="cb12-42"><a href="#cb12-42" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb12-43"><a href="#cb12-43" tabindex="-1"></a><span class="co"># [[3]]</span></span>
+<span id="cb12-44"><a href="#cb12-44" tabindex="-1"></a><span class="co"># # A tibble: 287 × 2</span></span>
+<span id="cb12-45"><a href="#cb12-45" tabindex="-1"></a><span class="co">#    date       TP.AB.B1</span></span>
+<span id="cb12-46"><a href="#cb12-46" tabindex="-1"></a><span class="co">#    &lt;date&gt;        &lt;dbl&gt;</span></span>
+<span id="cb12-47"><a href="#cb12-47" tabindex="-1"></a><span class="co">#  1 2000-01-01    1011 </span></span>
+<span id="cb12-48"><a href="#cb12-48" tabindex="-1"></a><span class="co">#  2 2000-02-01    1011 </span></span>
+<span id="cb12-49"><a href="#cb12-49" tabindex="-1"></a><span class="co">#  3 2000-03-01    1011.</span></span>
+<span id="cb12-50"><a href="#cb12-50" tabindex="-1"></a><span class="co">#  4 2000-04-01    1011.</span></span>
+<span id="cb12-51"><a href="#cb12-51" tabindex="-1"></a><span class="co">#  5 2000-05-01    1011.</span></span>
+<span id="cb12-52"><a href="#cb12-52" tabindex="-1"></a><span class="co">#  6 2000-06-01    1011.</span></span>
+<span id="cb12-53"><a href="#cb12-53" tabindex="-1"></a><span class="co">#  7 2000-07-01    1010.</span></span>
+<span id="cb12-54"><a href="#cb12-54" tabindex="-1"></a><span class="co">#  8 2000-08-01    1033 </span></span>
+<span id="cb12-55"><a href="#cb12-55" tabindex="-1"></a><span class="co">#  9 2000-09-01    1025 </span></span>
+<span id="cb12-56"><a href="#cb12-56" tabindex="-1"></a><span class="co"># 10 2000-10-01     988 </span></span>
+<span id="cb12-57"><a href="#cb12-57" tabindex="-1"></a><span class="co"># # ℹ 277 more rows</span></span>
+<span id="cb12-58"><a href="#cb12-58" tabindex="-1"></a><span class="co"># # ℹ Use `print(n = ...)` to see more rows</span></span></code></pre></div>
 </div>
 <div class="section level3">
-<h3 id="excel">excel<a class="anchor" aria-label="anchor" href="#excel"></a>
+<h3 id="excel-export">Excel export<a class="anchor" aria-label="anchor" href="#excel-export"></a>
 </h3>
 <blockquote>
 <p>creates excel file including all data frames of the object</p>
 </blockquote>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="sc">&gt;</span> obj <span class="ot">&lt;-</span> <span class="fu">get_series</span>( <span class="at">index =</span> <span class="fu">template_test</span>() )</span>
-<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">excel</span>(obj , <span class="st">"file_name.xlsx"</span> , <span class="st">"somefolder"</span> ) </span>
-<span id="cb12-3"><a href="#cb12-3" tabindex="-1"></a>or </span>
-<span id="cb12-4"><a href="#cb12-4" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">excel</span>(obj , <span class="st">"file_name"</span> , <span class="st">"somefolder"</span> ) </span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span><span class="va">obj</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/get_series.html">get_series</a></span><span class="op">(</span> index <span class="op">=</span> <span class="fu"><a href="reference/template_test.html">template_test</a></span><span class="op">(</span><span class="op">)</span> <span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Export data frames to an Excel file</span></span>
+<span><span class="fu"><a href="reference/excel.html">excel</a></span><span class="op">(</span><span class="va">obj</span>, <span class="st">"file_name.xlsx"</span>, <span class="st">"somefolder"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="getting-api-keys">Getting api keys<a class="anchor" aria-label="anchor" href="#getting-api-keys"></a>

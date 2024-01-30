@@ -27,5 +27,6 @@ die_if_bad_response <- function(gelen, currentObj) {
 }
 die_if_bad_response_helper <- function(status_code = 500) {
   problem <- error_means(status_code)
+  message(problem)
   stop()
 }

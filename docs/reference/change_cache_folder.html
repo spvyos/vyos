@@ -68,6 +68,11 @@ when user wants to make last requests available for a while for the next calls.<
 the check_users_choice_if_cache function that provides some options to user to use
 as a cache folder or a temporary one or not caching.</p></dd>
 
+
+<dt>verbose</dt>
+<dd><p>bool True or False. If TRUE it gives information when the
+cache folder was set. Otherwise only prints warning then there is an error.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
@@ -79,7 +84,6 @@ as a cache folder or a temporary one or not caching.</p></dd>
     <div id="ref-examples">
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">change_cache_folder</span><span class="op">(</span> <span class="st">"my_cache_folder"</span> , verbose <span class="op">=</span> <span class="cn">TRUE</span> <span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">cache folder was set [my_cache_folder]</span></span>
 </code></pre></div>
     </div>
   </div>

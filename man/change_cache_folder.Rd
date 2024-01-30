@@ -11,6 +11,9 @@ change_cache_folder(folder = null, verbose = FALSE)
 \item{folder}{folder to set as a cache folder. Default value is NULL which triggers
 the check_users_choice_if_cache function that provides some options to user to use
 as a cache folder or a temporary one or not caching.}
+
+\item{verbose}{bool True or False. If TRUE it gives information when the
+cache folder was set. Otherwise only prints warning then there is an error.}
 }
 \value{
 null

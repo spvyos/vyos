@@ -45,7 +45,7 @@ print.vyos_GETPREP <- function(x, ...) {
 
 =========================================================\n
   "
-  .blue(template)
+  .blue_force(template   )
   inv(x)
 }
 combine_df <- function(x, ...) {
