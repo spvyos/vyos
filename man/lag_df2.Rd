@@ -2,7 +2,7 @@
 % Please edit documentation in R/lag_df.R
 \name{lag_df2}
 \alias{lag_df2}
-\title{lag_df}
+\title{lag_df2}
 \usage{
 lag_df2(df, laglist)
 }
