@@ -30,3 +30,5 @@ clear <- function() {
   # gc()
   .green("cleared all items.")
 }
+
+
