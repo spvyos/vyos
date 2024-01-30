@@ -6,6 +6,7 @@ CURRENT_VERSION<-  "1.0.0"
 get_current_package_vers<-function(){
   CURRENT_VERSION
 }
+
 globalVariables( c( "nums" , "everything" , "Tarih" ,
                     "fnc_str"  , "tarih", "." , "base" ))
 

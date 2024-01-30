@@ -2,8 +2,5 @@ pandoc: 3.1.11.1
 pkgdown: 2.0.7
 pkgdown_sha: ~
 articles: {}
-last_built: 2024-01-29T19:39Z
-urls:
-  reference: https://sermetpekin.github.io/vyos-repo/reference
-  article: https://sermetpekin.github.io/vyos-repo/articles
+last_built: 2024-01-30T18:00Z
 
