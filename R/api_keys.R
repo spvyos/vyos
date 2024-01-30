@@ -20,14 +20,13 @@ check_api_key_works <- function(source_name = "evds",
   if (is.function(fnc)) {
     res <- fnc(key)
     if (res) {
-        .blue_force(g("\n
+      .blue_force(g("\n
 =========================================================
     api key for [{source_name}] was tested successfully.
 =========================================================\n
                 "))
-        return(inv(true))
+      return(inv(true))
     }
-
   }
   message_api_key_fails(source_name, key)
   Sys.sleep(2)
@@ -43,7 +42,6 @@ message_api_key_fails <- function(source_name = "evds",
                     {format_message_set_api_key(source_name)}
 =========================================================\n\r"
   message(g(msg))
-
 }
 replace_if_null <- function(x, value) {
   if (is.null(x)) {

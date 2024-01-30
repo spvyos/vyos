@@ -40,9 +40,9 @@ get_series_prepare <- function(index = null,
                                start_date = default_start_date(),
                                end_date = default_end_date(),
                                freq = null,
-                               cache = FALSE ,
-                               na.remove = TRUE ,
-                               verbose = FALSE ,
+                               cache = FALSE,
+                               na.remove = TRUE,
+                               verbose = FALSE,
                                ...,
                                source = c("multi", "evds", "fred"),
                                base = c("multi", "series", "table")) {
@@ -55,10 +55,10 @@ get_series_prepare <- function(index = null,
     stop(msg, call. = F)
   }
 
-  if(verbose){
-      verbose_on()
-  }else{
-      verbose_off()
+  if (verbose) {
+    verbose_on()
+  } else {
+    verbose_off()
   }
 
 
@@ -109,7 +109,7 @@ get_series <- function(index = null,
                        freq = null,
                        cache = FALSE,
                        na.remove = TRUE,
-                       verbose = FALSE ,
+                       verbose = FALSE,
                        ...,
                        source = c("multi", "evds", "fred"), # for internal use
                        base = c("multi", "series", "table"), # for internal use
@@ -124,9 +124,8 @@ get_series <- function(index = null,
     end_date   = end_date,
     freq.      = freq,
     cache      = cache,
-    na.remove  = na.remove ,
+    na.remove  = na.remove,
     verbose    = verbose
-
   )
 
   if (debug) {

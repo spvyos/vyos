@@ -1,4 +1,4 @@
- #' print.vyos_GETPREP
+#' print.vyos_GETPREP
 #' Generic method for S3 vyos_GETPREP object
 #' @param x S3 vyos_GETPREP object
 #' @param ... further arguments passed to or from other methods.
@@ -45,7 +45,7 @@ print.vyos_GETPREP <- function(x, ...) {
 
 =========================================================\n
   "
-  .blue_force(template   )
+  .blue_force(template)
   inv(x)
 }
 combine_df <- function(x, ...) {

@@ -22,7 +22,7 @@ excel <- function(
     .debug = FALSE,
     env = rlang::caller_env(),
     ...) {
-  obj<- excel_internal(
+  obj <- excel_internal(
     dfs = dfs,
     file_name = file_name,
     folder = folder,
@@ -30,7 +30,7 @@ excel <- function(
     env = env,
     ...
   )
-  inv(obj )
+  inv(obj)
 }
 check_rehber <- function(df = NULL) {
   rehber <- attr(df, "rehber")
