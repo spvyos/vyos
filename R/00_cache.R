@@ -20,7 +20,12 @@ na_if_null <- function(value) {
 
 
 check_package_installed <- function(package = "testthat") {
-  package %in% installed.packages()
+  .check <- FALSE
+  try({
+    .check <- rlang::is_installed(package)
+  })
+
+  return(.check)
 }
 
 get_input_from_user <- function(prompt = "Enter any number : ", as.int = T, default.when.testing = 1) {
@@ -106,11 +111,27 @@ check_users_choice_if_cache <- function(cache = FALSE) {
   options("VYOS_cache_folder_asked" = "true")
 }
 
-change_cache_folder <- function(folder = null) {
+#' Sets cache folder or changes it if it was already set in order to save caches
+#' when user wants to make last requests available for a while for the next calls.
+#' @param folder folder to set as a cache folder. Default value is NULL which triggers
+#' the check_users_choice_if_cache function that provides some options to user to use
+#' as a cache folder or a temporary one or not caching.
+#'
+#' @return null
+#' @export
+#'
+#' @examples
+#' change_cache_folder( "my_cache_folder" , verbose = TRUE )
+change_cache_folder <- function(folder = null , verbose = FALSE ) {
   if (is.null(folder)) {
     return(get_cache_folder(forget = TRUE))
   }
   options("VYOS_cache_folder_session" = folder)
+  if(verbose)
+      .green( "cache folder was set [{folder }]")
+
+  inv(NULL)
+
 }
 
 

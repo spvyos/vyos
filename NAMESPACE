@@ -1,9 +1,9 @@
-
+# main imports
 useDynLib(vyos, .registration=TRUE)
 importFrom(Rcpp, evalCpp)
 
 
-
+# Vyos Package
 export(get_series)
 export(set_api_key)
 export(lag_df)
@@ -14,11 +14,12 @@ export(excel)
 export(inn)
 export(`%inn%`)
 export(remove_columns)
+export(change_cache_folder)
 
-
+# S3 methods
 S3method(print,vyos_GETPREP)
 
-
+# imports
 importFrom("utils", "read.delim2")
 importFrom(magrittr, `%>%`)
 importFrom(rlang, `%||%`)
