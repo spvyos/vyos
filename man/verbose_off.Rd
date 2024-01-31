@@ -7,7 +7,7 @@
 verbose_off()
 }
 \value{
-The function has no explicit return value.
+The function has no return value.
 }
 \description{
 This function turns off verbose mode, suppressing additional informational

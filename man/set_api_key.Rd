@@ -21,7 +21,7 @@ if \code{file} was selected it will save api key to current folder.}
 \item{...}{for future versions}
 }
 \value{
-null
+The function has no return value.
 }
 \description{
 set_api_key
