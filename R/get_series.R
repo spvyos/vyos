@@ -36,6 +36,18 @@ default_end_date <- function() {
   lubridate::ymd("2100/01/01")
 }
 
+
+check_verbose_if_diff_change<- function( verbose = TRUE  ){
+
+    current_verbose <- check_verbose_option()
+    if (verbose != current_verbose) {
+        if (verbose) {
+            verbose_on()
+        } else {
+            verbose_off()
+        }
+    }
+}
 get_series_prepare <- function(index = null,
                                start_date = default_start_date(),
                                end_date = default_end_date(),
@@ -54,12 +66,9 @@ get_series_prepare <- function(index = null,
     "
     stop(msg, call. = F)
   }
+    # check if change necessary
+    check_verbose_if_diff_change( verbose )
 
-  if (verbose) {
-    verbose_on()
-  } else {
-    verbose_off()
-  }
 
 
   rlang::check_required(index)

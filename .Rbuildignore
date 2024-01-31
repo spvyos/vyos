@@ -9,3 +9,4 @@
 ^some\.c\.txt
 ^cran-comments\.md$
 ^docs
+^CRAN-SUBMISSION$
