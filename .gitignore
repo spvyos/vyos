@@ -14,3 +14,4 @@ tests/.DS_Store
 *.Rcheck
 caches_vyos/
 vyos.Rproj
+CRAN-SUBMISSION*.*
