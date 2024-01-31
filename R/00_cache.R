@@ -48,17 +48,17 @@ get_user_choice_cache_folder <- function() {
 
     options("VYOS_cache_folder" = "./caches_vyos" )
     '
-  .yellow(msg1)
+  .blue_force(msg1)
 
   msg2 <- "
     If you approve the script will create a caches folder in your current working folder
     1 - I approve a `caches_vyos` folder in my current working folder
     2 - I would like to go with a temporary folder for this session
                  [{tempdir()}]
-    3 - No, I don\'t like any cache option I want to make request all the time.
+    3 - No, I do not like any cache option I prefer making a new request every time.
 
     "
-  .yellow(msg2)
+  .blue_force(msg2)
 
   ans <- get_input_from_user("?", default.when.testing = 1)
   ans
@@ -112,29 +112,7 @@ check_users_choice_if_cache <- function(cache = FALSE) {
 }
 
 
-#' Sets the cache folder or changes it if it was already set to save caches.
-#'
-#' @param folder Folder to set as a cache folder. The default value is NULL,
-#' which triggers the check_users_choice_if_cache function that provides some
-#' options to the user to use it as a cache folder, a temporary one, or disable caching.
-#' @param verbose Boolean. If TRUE, it provides information when the
-#' cache folder is set. Otherwise, it only prints a warning when there is an error.
-#' @return NULL
-#' @export
-#'
-#' @examples
-#' change_cache_folder("my_cache_folder", verbose = TRUE)
-change_cache_folder <- function(folder = null, verbose = FALSE) {
-  if (is.null(folder)) {
-    return(get_cache_folder(forget = TRUE))
-  }
-  options("VYOS_cache_folder_session" = folder)
-  if (verbose) {
-    success_force("cache folder was set [{folder }]")
-  }
 
-  inv(NULL)
-}
 
 
 cache_folder_is_valid <- function(folder = "null") {

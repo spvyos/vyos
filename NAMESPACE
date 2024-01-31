@@ -15,6 +15,9 @@ export(inn)
 export(`%inn%`)
 export(remove_columns)
 export(change_cache_folder)
+export(verbose_on)
+export(verbose_off)
+
 
 # S3 methods
 S3method(print,vyos_GETPREP)

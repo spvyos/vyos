@@ -58,6 +58,12 @@
     <loc>/reference/template_test.html</loc>
   </url>
   <url>
+    <loc>/reference/verbose_off.html</loc>
+  </url>
+  <url>
+    <loc>/reference/verbose_on.html</loc>
+  </url>
+  <url>
     <loc>/reference/vyos-build-checks.html</loc>
   </url>
 </urlset>

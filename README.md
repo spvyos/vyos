@@ -19,7 +19,7 @@ and [FRED API](https://fred.stlouisfed.org/docs/api/fred/) of FED (Federal Reser
 ### Development version
 ``` r
 library(devtools)
-install_github("spvyos/vyos-repo")
+install_github("spvyos/vyos")
 ```
 
 ## Usage
@@ -243,8 +243,11 @@ df
 
 ### lag_df  
 
-> it takes a data frame and a list of column names and lag sequences, it creates a data frame with lagged values 
-of the column names given if the column name exists in data frame. 
+> The `lag_df` function creates additional columns based on a list of column names
+and lag sequences. This feature is beneficial for scenarios where you need
+varying lag selections for certain columns, allowing flexibility in specifying
+different lags for different columns or opting for no lag at all.
+
 
 ```r
 df2 <- lag_df( df , list( TP_YSSK_A1 = 1 : 3 , TP_YSSK_A2 = 1 : 6 ) )
@@ -400,9 +403,8 @@ o
 
 ```r
 
-obj <- get_series( index = template_test() )
-
 # Export data frames to an Excel file
+obj <- get_series( index = template_test() )
 excel(obj, "file_name.xlsx", "somefolder")
 
 

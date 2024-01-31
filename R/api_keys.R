@@ -75,7 +75,8 @@ show_usage <- function(func_name = "set_api_key",
 #' as an environment variable
 #' if `file` was selected it will save api key to current folder.
 #' @param ... for future versions
-#' @return null
+#' @return
+#'  The function has no return value.
 #' @export
 #'
 #' @examples
