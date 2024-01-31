@@ -211,7 +211,14 @@ df_raw
 ```
 
 ###  remove_na_safe
-> removes NA values from the data frame if all the columns are NA to a certain point and after a certain point. When there is any value that is not NA in a row it continues without removing any row until all the columns of a row is NA again to protect the meaningful date sequence of the time series of the current data frame.  
+> This function removes rows from both ends of a data frame until it identifies
+a row where all columns have non-NA values. Starting from the beginning, it
+removes rows until it encounters a row with complete data at a specific row
+index (e.g., row 5).
+It then proceeds to remove rows from the end of the data frame, eliminating
+any rows with at least one NA value in any column.
+The process stops when it finds a row where all columns contain non-NA values,
+and the resulting data frame is returned.
 
 ```r 
 df <- remove_na_safe(df_raw )
