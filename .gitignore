@@ -15,3 +15,4 @@ tests/.DS_Store
 caches_vyos/
 vyos.Rproj
 CRAN-SUBMISSION*.*
+APIKEYS/
