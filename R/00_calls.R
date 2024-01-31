@@ -11,6 +11,7 @@ c_all <- function(.test = F) {
   }
 }
 
+
 # ========================================================================= clear
 clear <- function() {
   items <- ls(all.names = TRUE, envir = rlang::global_env())
