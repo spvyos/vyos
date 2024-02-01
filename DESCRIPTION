@@ -10,7 +10,7 @@ Maintainer: Sermet Pekin <sermetpekin@gmail.com>
 URL: https://github.com/spvyos/vyos, https://spvyos.github.io/vyos/
 BugReports: https://github.com/spvyos/vyos/issues
 Description: Interface for multiple data sources, such as the 
-    EDDS API <https://evds2.tcmb.gov.tr/index.php?/evds/userDocs> of the 
+    EDDS API <https://evds2.tcmb.gov.tr/index.php?/evds/userDocs/> of the 
     Central Bank of the Republic of Türkiye and the 
     FRED API <https://fred.stlouisfed.org/docs/api/fred/> of the Federal Reserve Bank. 
     Both data providers require API keys for access, which users can easily obtain 

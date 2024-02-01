@@ -33,7 +33,7 @@ check_list_connections<-function(verbose = TRUE ){
 
     display_res<-function( res ){
         if (res ) return ( crayon::green("[+]"))
-        return ( crayon::red("[+]"))
+        return ( crayon::red("[-]"))
     }
     template <- g("
 ========== [only basic connection was checked]  ================================

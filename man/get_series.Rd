@@ -33,8 +33,8 @@ get_series(
 
 \item{verbose}{If TRUE, prints information during the process; if FALSE, silently does its job.
 default is NULL which implies applying default verbose option. If this function is called with
-a TRUE or FALSE value it temporarily ignores general default choice.
-Gives a warning only if something goes wrong.}
+a TRUE or FALSE value it changes global verbose option for \code{vyos} package.
+If verbose option is FALSE it gives a warning only if something goes wrong.}
 
 \item{...}{Additional parameters for future versions.}
 
