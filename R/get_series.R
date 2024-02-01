@@ -39,6 +39,7 @@ default_end_date <- function() {
 
 check_verbose_if_diff_change<- function( verbose = TRUE  ){
 
+    if(is.null( verbose )) return( )
     current_verbose <- check_verbose_option()
     if (verbose != current_verbose) {
         if (verbose) {
@@ -54,7 +55,7 @@ get_series_prepare <- function(index = null,
                                freq = null,
                                cache = FALSE,
                                na.remove = TRUE,
-                               verbose = FALSE,
+                               verbose = NULL ,
                                ...,
                                source = c("multi", "evds", "fred"),
                                base = c("multi", "series", "table")) {

@@ -13,7 +13,9 @@
 #' @param cache If FALSE, a new request will be made; if TRUE, cached data will be used.
 #' @param na.remove If TRUE, NA values are removed only if all columns are NA.
 #' @param verbose If TRUE, prints information during the process; if FALSE, silently does its job.
-#' Gives a warning only if something goes wrong.
+#' default is NULL which implies applying default verbose option. If this function is called with
+#' a TRUE or FALSE value it changes global verbose option for `vyos` package.
+#' If verbose option is FALSE it gives a warning only if something goes wrong.
 #' @param ... Additional parameters for future versions.
 #' @param debug Debug option for development.
 #' @param source Source such as "evds" or "fred" for internal use at this version.
@@ -36,11 +38,11 @@ get_series <- function(index = NULL,
                        freq = NULL,
                        cache = FALSE,
                        na.remove = TRUE,
-                       verbose = FALSE,
+                       verbose = NULL   ,
                        ...,
                        source = c("multi", "evds", "fred"), # for internal use
                        base = c("multi", "series", "table"), # for internal use
-                       debug = FALSE) {
+                       debug = FALSE  ) {
   check_users_choice_if_cache(cache)
 
   obj <- get_series_prepare(
