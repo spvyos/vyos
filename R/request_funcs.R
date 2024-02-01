@@ -144,7 +144,7 @@ createUrlForSeries <- function(currentObj) {
   )
 }
 # ...................................................... request_httr2_helper
-request_httr2_helper <- function(url, cache = T) {
+request_httr2_helper <- function(url, cache = TRUE) {
   assign_("d_url", url)
   cache_name <- cache_name_format("request_httr2_helper", url)
   check <- check_cache_comp(cache_name, cache)

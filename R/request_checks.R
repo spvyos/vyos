@@ -16,14 +16,14 @@ is_response <- function(gelen) {
     "httr_response" %in% class(gelen) ||
     "response" %in% class(gelen)
 }
-die_if_bad_response <- function(gelen, currentObj) {
-  if (is_response(gelen) && gelen$status_code == 200) {
+die_if_bad_response <- function(response  , currentObj) {
+  if (is_response(response) && response$status_code == 200) {
     return(invisible(TRUE))
   }
-  if (!is_response(gelen)) {
+  if (!is_response(response)) {
     return(false)
   }
-  die_if_bad_response_helper(gelen$status_code)
+  die_if_bad_response_helper(response$status_code)
 }
 die_if_bad_response_helper <- function(status_code = 500) {
   problem <- error_means(status_code)
