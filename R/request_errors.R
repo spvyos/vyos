@@ -7,14 +7,18 @@ error_list <- function() {
     "Too Many Requests",
     "Internal Server Error"
   )
-  df <- list(
-    nums = nums,
-    errors = errors
+
+  return(
+      base::data.frame(
+          nums = nums,
+          errors = errors
+      )
   )
-  as.data.frame(df)
+
 }
 error_means <- function(error_code = 400) {
+    crayon::red(
   error_list() %>%
     dplyr::filter(nums == error_code) %>%
-    .$errors
+    .$errors )
 }
