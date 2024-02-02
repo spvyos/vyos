@@ -38,11 +38,11 @@ get_series <- function(index = NULL,
                        freq = NULL,
                        cache = FALSE,
                        na.remove = TRUE,
-                       verbose = NULL   ,
+                       verbose = NULL,
                        ...,
                        source = c("multi", "evds", "fred"), # for internal use
                        base = c("multi", "series", "table"), # for internal use
-                       debug = FALSE  ) {
+                       debug = FALSE) {
   check_users_choice_if_cache(cache)
 
   obj <- get_series_prepare(

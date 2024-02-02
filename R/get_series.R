@@ -37,17 +37,18 @@ default_end_date <- function() {
 }
 
 
-check_verbose_if_diff_change<- function( verbose = TRUE  ){
-
-    if(is.null( verbose )) return( )
-    current_verbose <- check_verbose_option()
-    if (verbose != current_verbose) {
-        if (verbose) {
-            verbose_on()
-        } else {
-            verbose_off()
-        }
+check_verbose_if_diff_change <- function(verbose = TRUE) {
+  if (is.null(verbose)) {
+    return()
+  }
+  current_verbose <- check_verbose_option()
+  if (verbose != current_verbose) {
+    if (verbose) {
+      verbose_on()
+    } else {
+      verbose_off()
     }
+  }
 }
 get_series_prepare <- function(index = null,
                                start_date = default_start_date(),
@@ -55,7 +56,7 @@ get_series_prepare <- function(index = null,
                                freq = null,
                                cache = FALSE,
                                na.remove = TRUE,
-                               verbose = NULL ,
+                               verbose = NULL,
                                ...,
                                source = c("multi", "evds", "fred"),
                                base = c("multi", "series", "table")) {
@@ -67,8 +68,8 @@ get_series_prepare <- function(index = null,
     "
     stop(msg, call. = F)
   }
-    # check if change necessary
-    check_verbose_if_diff_change( verbose )
+  # check if change necessary
+  check_verbose_if_diff_change(verbose)
 
 
 

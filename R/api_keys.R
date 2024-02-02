@@ -1,41 +1,42 @@
-check_web_connection<-function( url = "http://ww.google.com"){
+check_web_connection <- function(url = "http://ww.google.com") {
+  response <- request_httr2_helper(url, cache = FALSE)
+  conn_ok <- is_response(response) && response$status_code == 200
 
-    response <- request_httr2_helper(url, cache = FALSE  )
-    conn_ok <- is_response(response) && response$status_code == 200
-
-    return(conn_ok)
+  return(conn_ok)
 }
 
-check_connection_evds<-function(){
-
-    check_web_connection("https://evds2.tcmb.gov.tr" )
+check_connection_evds <- function() {
+  check_web_connection("https://evds2.tcmb.gov.tr")
 }
 
-check_connection_fred<-function(){
-
-    check_web_connection("https://fred.stlouisfed.org/docs/api/fred/" )
+check_connection_fred <- function() {
+  check_web_connection("https://fred.stlouisfed.org/docs/api/fred/")
 }
 
-check_connection_google<-function(){
-
-    check_web_connection("https://www.google.com" )
+check_connection_google <- function() {
+  check_web_connection("https://www.google.com")
+}
+check_connection_documentation <- function() {
+  check_web_connection("https://spvyos.github.io/vyos/")
 }
 
-check_list_connections<-function(verbose = TRUE ){
+check_list_connections <- function(verbose = TRUE) {
+  cons <- list(
+    google = check_connection_google,
+    evds = check_connection_evds,
+    fred = check_connection_fred
+  )
 
-    cons <- list(google = check_connection_google ,
-      evds= check_connection_evds ,
-      fred = check_connection_fred
-      )
+  result <- purrr::map(cons, function(x) x())
+  g <- glue::glue
 
-   result <-  purrr::map( cons , function (x) x() )
-    g = glue::glue
-
-    display_res<-function( res ){
-        if (res ) return ( crayon::green("[+]"))
-        return ( crayon::red("[-]"))
+  display_res <- function(res) {
+    if (res) {
+      return(crayon::green("[+]"))
     }
-    template <- g("
+    return(crayon::red("[-]"))
+  }
+  template <- g("
 ========== [only basic connection was checked]  ================================
  The API key will be verified once a successful internet connection has been confirmed.
 
@@ -47,18 +48,18 @@ check_list_connections<-function(verbose = TRUE ){
                   ")
 
 
-    if(verbose )
-        cat(template )
+  if (verbose) {
+    cat(template)
+  }
 
-    return(  all( purrr::map_vec( result , function (x) isTRUE(x)  ) )  )
+  return(all(purrr::map_vec(result, function(x) isTRUE(x))))
 }
 
 
-if_api_key_fails_check_internet_connection<-function( verbose = TRUE ){
+if_api_key_fails_check_internet_connection <- function(verbose = TRUE) {
+  connection_works <- check_list_connections(verbose)
 
-   connection_works =  check_list_connections( verbose )
-
-   return( connection_works)
+  return(connection_works)
 }
 
 
@@ -74,8 +75,8 @@ format_message_set_api_key <- function(source_name = "evds") {
                    \n')
 }
 check_api_key_works <- function(source_name = "evds",
-                                key = ".." ,
-                                .test = F ) {
+                                key = "..",
+                                .test = F) {
   liste <- list(
     evds = quick_check_evds,
     fred = quick_check_fred
@@ -94,14 +95,14 @@ check_api_key_works <- function(source_name = "evds",
     }
   }
 
-  result =  if_api_key_fails_check_internet_connection(verbose = TRUE )
-  if(!result || .test  ){
-      message( "\n
+  result <- if_api_key_fails_check_internet_connection(verbose = TRUE)
+  if (!result || .test) {
+    message("\n
 It appears there might be a connection issue. Consider saving your API keys when
 a connection is available\n
 ")
-      Sys.sleep(2)
-      stop()
+    Sys.sleep(2)
+    stop()
   }
   message_api_key_fails(source_name, key)
   Sys.sleep(2)

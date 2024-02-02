@@ -24,8 +24,8 @@
 #' \code{\link{verbose_on}}: Turn on verbose mode.
 #'
 verbose_off <- function() {
-    options("VYOS_verbose" = FALSE)
-    success_force("Verbose mode is now OFF. You may call `verbose_on()` anytime to enable it.")
+  options("VYOS_verbose" = FALSE)
+  success_force("Verbose mode is now OFF. You may call `verbose_on()` anytime to enable it.")
 }
 
 
@@ -55,11 +55,11 @@ verbose_off <- function() {
 #' \code{\link{verbose_off}}: Turn off verbose mode.
 #'
 verbose_on <- function() {
-    options("VYOS_verbose" = TRUE)
-    success_force("Verbose mode is now ON.\n")
-    success_force("You will receive additional information during function execution.\n")
+  options("VYOS_verbose" = TRUE)
+  success_force("Verbose mode is now ON.\n")
+  success_force("You will receive additional information during function execution.\n")
 
-    inv(NULL)
+  inv(NULL)
 }
 
 

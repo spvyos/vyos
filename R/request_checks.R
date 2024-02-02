@@ -16,7 +16,7 @@ is_response <- function(gelen) {
     "httr_response" %in% class(gelen) ||
     "response" %in% class(gelen)
 }
-die_if_bad_response <- function(response  , currentObj) {
+die_if_bad_response <- function(response, currentObj) {
   if (is_response(response) && response$status_code == 200) {
     return(invisible(TRUE))
   }

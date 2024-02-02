@@ -11,7 +11,6 @@
 #' @examples
 #' .check <- inn("a", list(a = 1:5))
 inn <- function(x, table) {
-
   if (is.data.frame(table)) {
     return(x %in% colnames(table))
   }
@@ -20,7 +19,6 @@ inn <- function(x, table) {
   }
 
   return(base::match(x, table, nomatch = 0L) > 0L)
-
 }
 
 
