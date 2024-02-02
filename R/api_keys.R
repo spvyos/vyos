@@ -39,12 +39,13 @@ check_list_connections<-function(verbose = TRUE ){
 ========== [only basic connection was checked]  ================================
  The API key will be verified once a successful internet connection has been confirmed.
 
-    google : {  display_res( result$google) }
+    google : { display_res( result$google) }
     evds   : { display_res( result$evds ) }
     fred   : { display_res( result$fred ) }
 ================================================================================
 
                   ")
+
 
     if(verbose )
         cat(template )
