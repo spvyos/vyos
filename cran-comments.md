@@ -3,11 +3,11 @@ This is a resubmission. In this version I have:
 
 * Bumped the patch number.  (1.0.1 -> 1.0.2)
 
-* Added single quotes for API names in description file.
+* Added single quotes for API names in the description file.
 
-* Fixed return value documentation of change_cache_folder function.
+* Rectified the return value documentation for the change_cache_folder function.
 
-* Cancelled some global value registers. Removed some development related functions. 
+* Removed the use of global variables and removed development-related functions.
 
 
 ## Resubmission

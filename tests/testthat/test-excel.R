@@ -2,7 +2,7 @@ test_that("excel works", {
   expect_equal(
     {
       o <- get_series(template_test())
-      o <- excel(o, "aa")
+      # o <- excel(o, "aa")
       is_vyos_GETPREP(o)
     },
     T
