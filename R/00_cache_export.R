@@ -5,7 +5,7 @@
 #' options to the user to use it as a cache folder, a temporary one, or disable caching.
 #' @param verbose Boolean. If TRUE, it provides information when the
 #' cache folder is set. Otherwise, it only prints a warning when there is an error.
-#' @return NULL
+#' @return No return value, called for side effects
 #' @export
 #'
 #' @examples

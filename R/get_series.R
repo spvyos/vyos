@@ -72,8 +72,6 @@ get_series_prepare <- function(index = null,
   check_verbose_if_diff_change(verbose)
 
 
-
-  rlang::check_required(index)
   lines <- get_lines_as_df(index)
   lines$freq <- rep(to_string(freq), nrow(lines))
   call. <- deparse(match.call())

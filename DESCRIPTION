@@ -1,8 +1,8 @@
 Package: vyos
 Type: Package
-Title: Interface for Multiple Data Providers EDDS and FRED
-Version: 1.0.0
-Date: 2024-01-27
+Title: Interface for Multiple Data Providers 'EDDS' and 'FRED'
+Version: 1.0.2
+Date: 2024-02-04
 Authors@R: c(
     person("Sermet", "Pekin", , "sermetpekin@gmail.com", role = c("aut", "cre" , "cph"))
   )
@@ -10,9 +10,9 @@ Maintainer: Sermet Pekin <sermetpekin@gmail.com>
 URL: https://github.com/spvyos/vyos, https://spvyos.github.io/vyos/
 BugReports: https://github.com/spvyos/vyos/issues
 Description: Interface for multiple data sources, such as the 
-    EDDS API <https://evds2.tcmb.gov.tr/index.php?/evds/userDocs/> of the 
+    'EDDS' API <https://evds2.tcmb.gov.tr/index.php?/evds/userDocs/> of the 
     Central Bank of the Republic of Türkiye and the 
-    FRED API <https://fred.stlouisfed.org/docs/api/fred/> of the Federal Reserve Bank. 
+    'FRED' API <https://fred.stlouisfed.org/docs/api/fred/> of the Federal Reserve Bank. 
     Both data providers require API keys for access, which users can easily obtain 
     by creating accounts on their respective websites. 
     The package provides caching ability with the selection of periods to increase the 

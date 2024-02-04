@@ -15,6 +15,9 @@ tests/.DS_Store
 caches_vyos/
 vyos.Rproj
 CRAN-SUBMISSION*.*
+CRAN-SUBMISSION
+cran-comments.md
+
 APIKEYS/
 *SECRET*.*
 

@@ -14,6 +14,9 @@ options to the user to use it as a cache folder, a temporary one, or disable cac
 \item{verbose}{Boolean. If TRUE, it provides information when the
 cache folder is set. Otherwise, it only prints a warning when there is an error.}
 }
+\value{
+No return value, called for side effects
+}
 \description{
 Sets the cache folder or changes it if it was already set to save caches.
 }
