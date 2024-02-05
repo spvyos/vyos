@@ -1,9 +1,9 @@
 test_that("get_series works", {
   expect_equal(
     {
-      obj <- get_series(template_test()  , debug = T )
+      obj <- get_series(template_test(), debug = T)
 
-      is_vyos_GETPREP( obj )
+      is_vyos_GETPREP(obj)
       # all(
       #   is.data.frame(obj$lines$data[[1]]),
       #   is.data.frame(obj$lines$data[[2]]),

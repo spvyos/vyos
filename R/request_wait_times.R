@@ -1,7 +1,6 @@
 # ............................................... check_last_requested_from_source
 check_last_requested_from_source <- function(.source = "evds") {
-
-  last_time <-   vyos_env$last_requests
+  last_time <- vyos_env$last_requests
 
 
   value <- ifelse(.source %in% names(last_time),
@@ -10,8 +9,8 @@ check_last_requested_from_source <- function(.source = "evds") {
   )
   value
 }
-# ............................................... save_time_request_kaynak
-save_time_request_kaynak <- function(.source = "evds") {
+# ............................................... save_last_requested_time
+save_last_requested_time <- function(.source = "evds") {
   last_time <- check_last_requested_from_source(.source)
   if (is.null(last_time)) {
     last_time <- list(
@@ -24,7 +23,7 @@ save_time_request_kaynak <- function(.source = "evds") {
 
   vyos_env$last_requests <- last_time
 
- inv(T)
+  inv(T)
 }
 # ...................................................................... get_now
 get_now <- function(num = 0) {
@@ -45,31 +44,32 @@ time_is_ok <- function(last_requested_time = get_yesterday(), seconds = 1) {
   diff_seconds > seconds
 }
 # ...................................................................... should_I_wait_for_request
-should_I_wait_for_request <- function(source_name = "evds", seconds = 1, .verbose =  check_verbose_option() ) {
+should_I_wait_for_request <- function(source_name = "evds", seconds = 1, .verbose = check_verbose_option()) {
   last_request_time <- check_last_requested_from_source(source_name)
   last_request_time <- as.POSIXct(last_request_time, origin = "1970-01-01")
   if (time_is_ok(last_request_time, seconds)) {
-    save_time_request_kaynak(source_name)
+    save_last_requested_time(source_name)
     return(inv(T))
   }
-  msg <- "pausing before a new request."
+
   if (.verbose) {
+    msg <- "pausing before a new request."
     .blue_force("->[{source_name}]: {msg}\n\r")
   }
 
   Sys.sleep(seconds)
-  save_time_request_kaynak(source_name)
+  save_last_requested_time(source_name)
   return(inv(T))
 }
 # ...................................................................... test_should_I_wait_for_request
-test_should_I_wait_for_request <- function(.verbose = T ) {
-  should_I_wait_for_request("evds", 3 , .verbose) == T
-  should_I_wait_for_request("evds", 3 , .verbose ) == T
-  should_I_wait_for_request("evds", 4 , .verbose ) == F
-  should_I_wait_for_request("evds", 2 , .verbose ) == T
-  should_I_wait_for_request("fred", 5 , .verbose ) == F
+test_should_I_wait_for_request <- function(.verbose = T) {
+  should_I_wait_for_request("evds", 3, .verbose) == T
+  should_I_wait_for_request("evds", 3, .verbose) == T
+  should_I_wait_for_request("evds", 4, .verbose) == F
+  should_I_wait_for_request("evds", 2, .verbose) == T
+  should_I_wait_for_request("fred", 5, .verbose) == F
   assert(
-    should_I_wait_for_request("fred", 5 , .verbose ) == T
+    should_I_wait_for_request("fred", 5, .verbose) == T
   )
   .green("done")
 }

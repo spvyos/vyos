@@ -10,7 +10,7 @@ test_that("print.vyos_GETPREP works", {
       template <- "
      TP.AB.B1
       "
-      a <- get_series(template, freq = "month", start_date = "2006/01/30" , debug =T )
+      a <- get_series(template, freq = "month", start_date = "2006/01/30", debug = T)
       print(a)
       is_vyos_GETPREP(a)
     },
