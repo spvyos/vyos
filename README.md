@@ -11,7 +11,7 @@ and [FRED API](https://fred.stlouisfed.org/docs/api/fred/) of FED (Federal Reser
 ## Installation
 
 ``` r
-# install.packages("vyos")
+install.packages("vyos")
 
 ```
 
