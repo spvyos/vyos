@@ -49,7 +49,7 @@ should_I_wait_for_request <- function(source_name = "evds", seconds = 1, .verbos
   last_request_time <- as.POSIXct(last_request_time, origin = "1970-01-01")
   if (time_is_ok(last_request_time, seconds)) {
     save_last_requested_time(source_name)
-    return(inv(T))
+    return(inv(F))
   }
 
   if (.verbose) {
