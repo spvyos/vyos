@@ -24,8 +24,16 @@
 #' \code{\link{verbose_on}}: Turn on verbose mode.
 #'
 verbose_off <- function() {
+
+    .check = check_verbose_option()
+
+    if(isFALSE( .check)){
+        success_force("Verbose mode is already OFF, returning.")
+        return(inv(NULL))
+    }
+
   options("VYOS_verbose" = FALSE)
-  success_force("Verbose mode is now OFF. You may call `verbose_on()` anytime to enable it.")
+  success_force("Verbose mode is now OFF. You may call `verbose_on()` to enable it.")
 }
 
 
@@ -55,7 +63,15 @@ verbose_off <- function() {
 #' \code{\link{verbose_off}}: Turn off verbose mode.
 #'
 verbose_on <- function() {
+
+  .check = check_verbose_option()
+
+  if(.check){
+      success_force("Verbose mode is already ON, returning.")
+      return(inv(NULL))
+  }
   options("VYOS_verbose" = TRUE)
+
   success_force("Verbose mode is now ON.\n")
   success_force("You will receive additional information during function execution.\n")
 
@@ -63,17 +79,17 @@ verbose_on <- function() {
 }
 
 
-
-
 check_verbose_option <- function() {
-  .check <- getOption("VYOS_verbose")
+    .check <- getOption("VYOS_verbose")
 
-  if (is.null(.check)) {
-    options(VYOS_verbose = FALSE)
-    return(FALSE)
-  }
-  return(.check)
+    if (is.null(.check)) {
+        options(VYOS_verbose = FALSE)
+        return(FALSE)
+    }
+    return(.check)
 }
+
+
 
 print_if_verbose <- function(msg) {
   .check <- check_verbose_option()

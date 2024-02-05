@@ -1,10 +1,10 @@
 null <- NULL
 false <- F
 true <- T
-CURRENT_VERSION <- "1.0.2"
+CURRENT_VERSION <- "1.0.3"
+
 
 get_current_package_vers <- function() {
-
 
   CURRENT_VERSION
 }
