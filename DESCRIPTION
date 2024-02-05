@@ -2,7 +2,7 @@ Package: vyos
 Type: Package
 Title: Interface for Multiple Data Providers 'EDDS' and 'FRED'
 Version: 1.0.2
-Date: 2024-02-04
+Date: 2024-02-05
 Authors@R: c(
     person("Sermet", "Pekin", , "sermetpekin@gmail.com", role = c("aut", "cre" , "cph"))
   )
