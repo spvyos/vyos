@@ -2,6 +2,8 @@
 useDynLib(vyos, .registration=TRUE)
 importFrom(Rcpp, evalCpp)
 
+ importFrom("utils", "packageVersion")
+
 
 # Vyos Package
 export(get_series)
