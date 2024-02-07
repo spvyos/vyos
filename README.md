@@ -1,6 +1,13 @@
 
 ## vyos
 [![R-CMD-check](https://github.com/spvyos/vyos/actions/workflows/R_CMD_check.yml/badge.svg)](https://github.com/spvyos/vyos/actions/workflows/R_CMD_check.yml)
+vyos: R package download stats
+---------
+
+[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/vyos?color=green)](https://cran.r-project.org/package=vyos)
+![](https://cranlogs.r-pkg.org/badges/grand-total/vyos?color=green)
+![](https://cranlogs.r-pkg.org/badges/vyos?color=green)
+![](https://cranlogs.r-pkg.org/badges/last-week/vyos?color=green)
 
 ## Overview
 
