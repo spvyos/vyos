@@ -18,14 +18,19 @@ and [FRED API](https://fred.stlouisfed.org/docs/api/fred/) of FED (Federal Reser
 
 ## Installation
 
+You can install the package from CRAN using:
+
 ``` r
 install.packages("vyos")
 
 ```
 
-
 ### Development version
+
+Or you can install the development version from GitHub:
+
 ``` r
+
 library(devtools)
 install_github("spvyos/vyos")
 ```
