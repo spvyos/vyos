@@ -10,3 +10,6 @@
 ^cran-comments\.md$
 ^docs
 ^CRAN-SUBMISSION$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
