@@ -20,5 +20,5 @@ cran-comments.md
 
 APIKEYS/
 *SECRET*.*
-
+!data-deps.txt
 
