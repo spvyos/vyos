@@ -106,7 +106,7 @@ get_freq_number_evds <- function(freq) {
   freq_u
 }
 check_freq_only_evds_series <- function(currentObj, urlParts) {
-  assign_("d_currentObj", currentObj)
+
   .base <- toString(attr(urlParts$series, "base"))
   .source <- toString(attr(urlParts$series, "source"))
   if (!(is_(.base, "series") && is_(.source, "evds"))) {
@@ -135,7 +135,7 @@ createUrlForSeries <- function(currentObj) {
   prop_value <- get_prop_value_from_source_object(currentObj)
   urlParts <- currentObj$series_fnc(prop_value)
   # freq is not needed in table ones only series of evds
-  urlParts <- check_freq_only_evds_series(currentObj, urlParts) # side effect start year will be checked
+  urlParts <- check_freq_only_evds_series(currentObj, urlParts) # side effect start date will be checked
   urlParts <- check_series_ID_for_dots(currentObj, urlParts) # replace '_' , '.'
   paste0(
     currentObj$url,
