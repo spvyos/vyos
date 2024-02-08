@@ -432,21 +432,23 @@ excel(obj, "file_name.xlsx", "somefolder")
 
 
 ```
-### Getting api keys
-Both data providers require API keys for access, which users can easily obtain 
-    by creating accounts on their respective websites. 
+## Getting API Keys
 
-### EDDS (CBRT)
+To access data from EDDS (CBRT) and FRED (FED), users need to obtain API keys by creating accounts on their respective websites.
 
-https://evds2.tcmb.gov.tr/index.php?/evds/userDocs
+### EDDS (CBRT) API Key
 
-    
-### FRED (FED)
+1. Visit the [EDDS (CBRT) API Documentation](https://evds2.tcmb.gov.tr/index.php?/evds/userDocs).
+2. Create an account on the EDDS website if you don't have one.
+3. Follow the documentation to generate your API key.
 
-https://fred.stlouisfed.org/docs/api/api_key.html
+### FRED (FED) API Key
 
+1. Go to the [FRED (FED) API Key Documentation](https://fred.stlouisfed.org/docs/api/api_key.html).
+2. Create an account on the FRED website if you haven't done so already.
+3. Follow the documentation to obtain your FRED API key.
 
-
+Make sure to securely store your API keys and never expose them in public repositories.
 
 ### Contributing
 
