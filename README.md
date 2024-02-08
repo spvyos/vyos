@@ -218,9 +218,19 @@ o
 o <- get_series(index_template )
 o
 ```
-> combined data frame can be accessed via obj$data 
- see also obj$lines
- 
+
+Accessing Combined and Lines Data Frames
+
+Once you have retrieved your data using the defined series, you can access the combined data frame and the lines data frame using the following structures:
+```r
+# Access the combined data frame
+combined_data <- obj$data
+
+# Access the 'lines' data frame
+lines_data <- obj$lines
+```
+This structure allows you to easily navigate through the object to access specific data frames.
+
 ```r 
 df_raw <- o$data
 
@@ -242,15 +252,37 @@ df_raw
 # # ℹ Use `print(n = ...)` to see more rows
 ```
 
-###  remove_na_safe
-> This function removes rows from both ends of a data frame until it identifies
-a row where all columns have non-NA values. Starting from the beginning, it
-removes rows until it encounters a row with complete data at a specific row
-index (e.g., row 5).
-It then proceeds to remove rows from the end of the data frame, eliminating
-any rows with at least one NA value in any column.
-The process stops when it finds a row where all columns contain non-NA values,
-and the resulting data frame is returned.
+
+### remove_na_safe
+
+This function removes rows from both ends of a data frame until it identifies a row where all columns have non-NA values. The process involves two steps:
+
+1. **Trimming from the Beginning:** It starts from the beginning and removes rows until it encounters a row with complete data at a specified row index (e.g., row 5).
+
+2. **Trimming from the End:** After the initial trimming, it proceeds to remove rows from the end of the data frame, eliminating any rows with at least one NA value in any column.
+
+The process stops when it finds a row where all columns contain non-NA values, and the resulting data frame is returned.
+
+#### Usage:
+
+```R
+# Example data frame
+example_data <- data.frame(
+  A = c(1, 2, 3, NA, 5),
+  B = c(NA, 2, 3, 4, 5),
+  C = c(1, 2, 3, 4, 5)
+)
+
+# Remove NA values from both ends, starting from row 3
+cleaned_data <- remove_na_safe(example_data, start_row = 3)
+
+# View the cleaned data frame
+print(cleaned_data)
+
+```
+In this example, the function remove_na_safe is applied to the example_data data frame, 
+starting the trimming process from row 3. The resulting cleaned_data will have rows 
+removed from both ends until a row with non-NA values in all columns is reached.
 
 ```r 
 df <- remove_na_safe(df_raw )
