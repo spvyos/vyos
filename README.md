@@ -252,14 +252,13 @@ df_raw
 # # ℹ Use `print(n = ...)` to see more rows
 ```
 
-
 ### remove_na_safe
 
 This function removes rows from both ends of a data frame until it identifies a row where all columns have non-NA values. The process involves two steps:
 
-1. **Trimming from the Beginning:** It starts from the beginning and removes rows until it encounters a row with complete data at a specified row index (e.g., row 5).
+1. **Trimming from the Beginning:** It starts from the beginning and removes rows until it encounters a row with complete data in all columns.
 
-2. **Trimming from the End:** After the initial trimming, it proceeds to remove rows from the end of the data frame, eliminating any rows with at least one NA value in any column.
+2. **Trimming from the End:** After the initial trimming, it proceeds to remove rows from the end of the data frame, eliminating any rows with at least one NA value in any column, until it reaches a row where all columns contain non-NA values.
 
 The process stops when it finds a row where all columns contain non-NA values, and the resulting data frame is returned.
 
@@ -273,16 +272,16 @@ example_data <- data.frame(
   C = c(1, 2, 3, 4, 5)
 )
 
-# Remove NA values from both ends, starting from row 3
-cleaned_data <- remove_na_safe(example_data, start_row = 3)
+# Remove NA values from both ends
+cleaned_data <- remove_na_safe(example_data)
 
 # View the cleaned data frame
 print(cleaned_data)
 
 ```
-In this example, the function remove_na_safe is applied to the example_data data frame, 
-starting the trimming process from row 3. The resulting cleaned_data will have rows 
-removed from both ends until a row with non-NA values in all columns is reached.
+
+In this example, the function remove_na_safe is applied to the example_data data frame. 
+The resulting cleaned_data will have rows removed from both ends until a row with non-NA values in all columns is reached.
 
 ```r 
 df <- remove_na_safe(df_raw )
@@ -305,12 +304,42 @@ df
 
 ```
 
+
 ### lag_df  
 
-> The `lag_df` function creates additional columns based on a list of column names
-and lag sequences. This feature is beneficial for scenarios where you need
-varying lag selections for certain columns, allowing flexibility in specifying
-different lags for different columns or opting for no lag at all.
+The `lag_df` function creates additional columns based on a list of column names and lag sequences. 
+This feature is beneficial for scenarios where you need varying lag selections
+for certain columns, allowing flexibility in specifying different lags for 
+different columns or opting for no lag at all.
+
+#### Usage Example:
+
+```R
+# Example data frame
+example_data <- data.frame(
+  a = c(10, 20, 30, 40, 50),
+  b = c(100, 200, 300, 400, 500)
+)
+
+# Applying lag_df function with specified lag sequences
+lagged_data <- lag_df(example_data, list(a = 1:3, b = 1:2))
+
+# View the lagged data frame
+print(lagged_data)
+
+# A tibble: 5 × 7
+      a     b a_lag_1 a_lag_2 a_lag_3 b_lag_1 b_lag_2
+  <dbl> <dbl>   <dbl>   <dbl>   <dbl>   <dbl>   <dbl>
+1    10   100      NA      NA      NA      NA      NA
+2    20   200      10      NA      NA     100      NA
+3    30   300      20      10      NA     200     100
+4    40   400      30      20      10     300     200
+5    50   500      40      30      20     400     300
+```
+
+In this example, the lag_df function is applied to the example_data data frame with
+specified columns (a and b) and corresponding lag sequences (1:3 and 1:6). 
+The resulting lagged_data will have additional columns representing the specified lags.
 
 
 ```r
@@ -334,8 +363,9 @@ df2
 # # ℹ Use `print(n = ...)` to see more rows
 ```
 
-> `get_series` function does not require source names for IDs. The function uses hints 
-    to figure out which sources to request from for the index IDs given.
+`get_series` function does not require source names for IDs. The function uses hints 
+to figure out which sources to request from for the index IDs given.
+
 
 ```r 
 index_template <- "
@@ -346,57 +376,6 @@ UNRATE
 
 o <- get_series(index_template )
 o
-
-# [cache was saved]->[evds]: pausing before a new request.
-# [cache was saved]->[fred]: pausing before a new request.> o
-# 
-# ======================================vyos_GETPREP=======
-#     status      : completed
-# index       : 
-#     TP_YSSK_A1
-# TP_YSSK_A2
-# UNRATE
-# 
-# start_year  : 2000-01-01
-# end_year    : 2100-01-01
-# ................... resolved [completed] ..............
-# 
-# ..................................
-# .........> lines   .............
-# ..................................
-# # each line corresponds to a different set of func and data
-# data can be reached as below
-# --> obj$lines$data
-# # A tibble: 3 × 8
-# index      source base   comments freq  fnc_str         fnc          data              
-# <chr>      <chr>  <chr>  <chr>    <chr> <chr>           <named list> <list>            
-#     1 TP_YSSK_A1 evds   series " "      null  evds_series_fnc <fn>         <tibble [287 × 2]>
-#     2 TP_YSSK_A2 evds   series " "      null  evds_series_fnc <fn>         <tibble [287 × 2]>
-#     3 UNRATE     fred   series " "      null  fred_series_fnc <fn>         <tibble [228 × 2]>
-#     ..................................
-# .........> (combined) data ...
-# ..................................
-# a combined data frame will be constructed
-# combined data can be reached as
-# --> obj$data
-# # A tibble: 228 × 4
-# date       TP_YSSK_A1 TP_YSSK_A2 UNRATE
-# <date>          <dbl>      <dbl>  <dbl>
-#     1 2005-01-01       5509       2226    5.3
-# 2 2005-02-01       5581       2299    5.4
-# 3 2005-03-01       5507       2347    5.2
-# 4 2005-04-01       5699       2444    5.2
-# 5 2005-05-01       5802       2404    5.1
-# 6 2005-06-01       6023       2321    5  
-# 7 2005-07-01       5886       2565    5  
-# 8 2005-08-01       6079       2577    4.9
-# 9 2005-09-01       5986       2525    5  
-# 10 2005-10-01       6103       2548    5  
-# # ℹ 218 more rows
-# # ℹ Use `print(n = ...)` to see more rows
-# ...........................................................
-# 
-# =========================================================
 
 ```
 
