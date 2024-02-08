@@ -49,13 +49,28 @@ set_api_key("YOUR_FRED_API_KEY", "fred", "file")
 
 ###  get_series 
 
+> Example 1: Explicit Sources
+
 ``` r
-# Define a template for series
+# Define a template for series with explicit sources
 template <- "
     UNRATE        #fred (series)
     bie_abreserv  #evds (table)
     TP.AB.B1      #evds (series)
 "
+
+> Example 2: Index-based Definition
+
+# Define a template for series with indexes
+template <- "
+    UNRATE         
+    bie_abreserv  
+    TP.AB.B1      
+"
+
+In the index-based definition, the package will automatically figure out the source
+and base from the provided indexes.
+
 
 # Fetch data based on the template
 obj <- get_series(template, start_date = "2012/05/22", cache = FALSE)
@@ -432,4 +447,8 @@ https://fred.stlouisfed.org/docs/api/api_key.html
 
 
 
+
+### Contributing
+
+If you find any issues or have suggestions for improvement, feel free to open an issue or submit a pull request on GitHub.
 

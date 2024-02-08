@@ -74,8 +74,8 @@ get_series_fred <- function(seriesID = "UNRATE",
                             ...,
                             debug = T,
                             cache = T) {
-  sonuc <- get_series_from_source(seriesID, debug, "fred", cache)
-  limit_start_date(sonuc, start_date)
+  result <- get_series_from_source(seriesID, debug, "fred", cache)
+  limit_start_date(result, start_date)
 }
 convert_result_list_to_data_frame_general <- function(result_list, v) {
   df <- combine_dfs_by_date2(result_list)
