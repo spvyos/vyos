@@ -363,9 +363,21 @@ o
 # =========================================================
 
 ```
-> individual data frames can be reached via `object$lines$data`
+
+Accessing Individual Data Frames
+
+Once you have retrieved your data using the defined series, individual data frames
+can be accessed using the following structure:
 
 ```r
+your_data <- object$lines$data
+
+```
+
+This structure allows you to navigate through the object to access specific data frames.
+
+```r
+
 > o$lines
 # # A tibble: 3 × 8
 #   index        source base   comments      freq  fnc_str         fnc          data              
