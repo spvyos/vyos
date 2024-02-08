@@ -63,20 +63,24 @@ template <- "
     bie_abreserv  #evds (table)
     TP.AB.B1      #evds (series)
 "
+```
+
 
 > Example 2: Index-based Definition
 
+``` r
 # Define a template for series with indexes
 template <- "
     UNRATE         
     bie_abreserv  
     TP.AB.B1      
 "
+```
 
 In the index-based definition, the package will automatically figure out the source
 and base from the provided indexes.
 
-
+``` r
 # Fetch data based on the template
 obj <- get_series(template, start_date = "2012/05/22", cache = FALSE)
 
