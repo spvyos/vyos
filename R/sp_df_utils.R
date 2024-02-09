@@ -29,18 +29,9 @@ remove_column <- function(df, column_name) {
   if (!column_name %in% colnames(df)) {
     return(df)
   }
-
   valid_cols <- colnames(df)
   valid_cols <- valid_cols[valid_cols != column_name]
-
-  df <- df[, valid_cols]
-
-  if (length(valid_cols) == 1) {
-    liste <- list()
-    liste[[valid_cols]] <- df
-    df <- as.data.frame(liste)
-  }
-
+  df <- df[, valid_cols , drop = F ]
   df
 }
 
