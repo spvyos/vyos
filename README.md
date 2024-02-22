@@ -1,7 +1,8 @@
 ## vyos R Package will be renamed as Rapi 
 
-@see        [Rapi (docs) ](https://datarapi.github.io/Rapi/) 
-            [Rapi (github)](https://github.com/DataRapi/Rapi/)
+@see   [Rapi (docs) ](https://datarapi.github.io/Rapi/) 
+
+@see   [Rapi (github)](https://github.com/DataRapi/Rapi/)
 
 
 
