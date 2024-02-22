@@ -1,3 +1,32 @@
+## vyos R Package will be renamed as Rapi 
+
+@see        [Rapi (docs) ](https://datarapi.github.io/Rapi/) 
+            [Rapi (github)](https://github.com/DataRapi/Rapi/)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ## vyos
 [![R-CMD-check](https://github.com/spvyos/vyos/actions/workflows/R_CMD_check.yml/badge.svg)](https://github.com/spvyos/vyos/actions/workflows/R_CMD_check.yml)
