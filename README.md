@@ -4,6 +4,10 @@
 
 @see   [Rapi (github)](https://github.com/DataRapi/Rapi/)
 
+<br>
+<br>
+<br>
+<br>
 
 
 
@@ -17,26 +21,10 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-## vyos
+## Rapi
 [![R-CMD-check](https://github.com/spvyos/vyos/actions/workflows/R_CMD_check.yml/badge.svg)](https://github.com/spvyos/vyos/actions/workflows/R_CMD_check.yml)
 
-vyos download stats
+download stats
 ---------
 
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/vyos?color=green)](https://cran.r-project.org/package=vyos)
@@ -46,7 +34,7 @@ vyos download stats
 
 ## Overview
 
-vyos package is an interface to make requests from data providers. 
+Rapi package is an interface to make requests from data providers. 
 Current version is able to connect to APIs of [EDDS](https://evds2.tcmb.gov.tr/index.php?/evds/userDocs/) of CBRT (Central Bank of the Republic of Türkiye)
 and [FRED API](https://fred.stlouisfed.org/docs/api/fred/) of FED (Federal Reserve Bank). 
 
