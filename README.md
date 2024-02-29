@@ -29,6 +29,10 @@
 
 
 
+
+
+
+
 ## vyos
 [![R-CMD-check](https://github.com/spvyos/vyos/actions/workflows/R_CMD_check.yml/badge.svg)](https://github.com/spvyos/vyos/actions/workflows/R_CMD_check.yml)
 
@@ -51,7 +55,7 @@ and [FRED API](https://fred.stlouisfed.org/docs/api/fred/) of FED (Federal Reser
 You can install the package from CRAN using:
 
 ``` r
-install.packages("vyos")
+install.packages("Rapi")
 
 ```
 
@@ -62,7 +66,7 @@ Or you can install the development version from GitHub:
 ``` r
 
 library(devtools)
-install_github("spvyos/vyos")
+install_github("DataRapi/Rapi")
 ```
 
 ## Usage
